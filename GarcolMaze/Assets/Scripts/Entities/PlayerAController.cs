@@ -19,8 +19,8 @@ public class PlayerAController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = Input.GetAxisRaw("P1_Horizontal");
+        movement.y = Input.GetAxisRaw("P1_Vertical");
         movement.Normalize();
         if (movement.sqrMagnitude > 0)
 		{
