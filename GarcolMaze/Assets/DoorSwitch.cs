@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class DoorSwitch : MonoBehaviour, IPointerClickHandler
 {
     const int MAX_DOOR_CNT = 4;
-    public DoorMovement[] doors = new DoorMovement[MAX_DOOR_CNT];
+    public MoveableObjects[] moveables = new MoveableObjects[MAX_DOOR_CNT];
     bool flippedX = true;
 
     public void OnPointerClick(PointerEventData eventData)
@@ -17,9 +17,9 @@ public class DoorSwitch : MonoBehaviour, IPointerClickHandler
         GetComponent<SpriteRenderer>().flipX = flippedX;
         for (int i = 0; i < MAX_DOOR_CNT; i++)
         {
-            if (doors[i] != null)
+            if (moveables[i] != null)
             {
-                doors[i].ToggleDoor();
+                moveables[i].Toggle();
             }
         }
         flippedX = !flippedX;
@@ -32,8 +32,5 @@ public class DoorSwitch : MonoBehaviour, IPointerClickHandler
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
+    void Update() { }
 }
