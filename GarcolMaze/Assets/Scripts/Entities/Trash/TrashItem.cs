@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TRASH_TYPE { Recyclable, NonRecyclable, Organic }
+public enum TrashType { Recyclable, NonRecyclable, Organic }
 
 
 public class TrashItem : Collectable
 {
 
-	public TRASH_TYPE trashType;
+	public TrashType trashType;
 
-	public override void Collect()
+	public override void Collect(PlayerController player)
 	{
-		
+		player.CollectTrashItem(trashType);
 	}
 
 	public override void Use()

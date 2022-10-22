@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-	public virtual void Collect() { }
+	public virtual void Collect(PlayerController player) { }
 	public virtual void Use() { }
 }

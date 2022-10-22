@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAController : MonoBehaviour
+public class PlayerAController : PlayerController
 {
     public const float PICKUP_RANGE = 0.5f;
 
     public float moveSpeed = 5f;
-    Rigidbody2D rigidbody;
+	Rigidbody2D rigidbody;
     Collider2D collider;    
     Animator animator;
 
@@ -59,7 +59,7 @@ public class PlayerAController : MonoBehaviour
             Collectable item = c.GetComponent<Collectable>();
             if (item != null)
 			{
-                item.Collect();
+                item.Collect(this);
                 Destroy(item.gameObject);
 			}
 		}
