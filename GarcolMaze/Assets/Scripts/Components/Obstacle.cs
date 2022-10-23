@@ -17,12 +17,18 @@ abstract public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        applyEffect(other);
+        if (other != null)
+        {
+            applyEffect(other);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        revertEffect(other);
+        if (other != null)
+        {
+            revertEffect(other);
+        }
     }
 
     abstract public void applyEffect(Collider2D other);
