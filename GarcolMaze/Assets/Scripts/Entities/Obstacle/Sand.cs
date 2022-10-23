@@ -6,12 +6,18 @@ public class Sand : Obstacle
 {
     public override void applyEffect(Collider2D other)
     {
-        other.attachedRigidbody.drag = 100;
+        if (other!.attachedRigidbody != null)
+        {
+            other.attachedRigidbody.drag = 100;
+        }
     }
 
     public override void revertEffect(Collider2D other)
     {
-        other.attachedRigidbody.drag = 0;
+        if (other!.attachedRigidbody != null)
+        {
+            other.attachedRigidbody.drag = 0;
+        }
     }
 
     // Use this for initialization
