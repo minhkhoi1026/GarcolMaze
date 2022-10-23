@@ -38,7 +38,7 @@ public class PlayerAController : PlayerController
 
         if (Input.GetKeyDown(KeyCode.F))
 		{
-            collectItems();
+            collectItems(collider.bounds.center, PICKUP_RANGE);
 		}
     }
 
@@ -51,17 +51,4 @@ public class PlayerAController : PlayerController
 	}
 
     // functionality
-    private void collectItems()
-	{
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(collider.bounds.center, PICKUP_RANGE);
-        foreach(Collider2D c in colliders)
-		{
-            Collectable item = c.GetComponent<Collectable>();
-            if (item != null)
-			{
-                item.Collect(this);
-                Destroy(item.gameObject);
-			}
-		}
-	}
 }
