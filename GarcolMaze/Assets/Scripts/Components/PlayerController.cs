@@ -12,12 +12,30 @@ public class PlayerController : MonoBehaviour
         Debug.Log(trashType.ToString());
     }
 
-    protected void TakeOutTrash()
+    public void TakeOutTrash(TrashType trashType)
 	{
-        for (int i = 0; i < 3; ++i)
-		{
-            trashCountTotal[i] += trashCountCurrent[i];
-            trashCountCurrent[i] = 0;
-		}
+        trashCountTotal[(int)trashType] += trashCountCurrent[(int)trashType];
+        trashCountCurrent[(int)trashType] = 0;
 	}
+
+    protected void collectItems(Vector2 position, float pickupRange)
+	{
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, pickupRange);
+        foreach (Collider2D c in colliders)
+        {
+            Collectable item = c.GetComponent<Collectable>();
+            if (item != null)
+            {
+                item.Collect(this);
+                Destroy(item.gameObject);
+            } else
+			{
+                Interactable interactableObj = c.GetComponent<Interactable>();
+                if (interactableObj != null)
+				{
+                    interactableObj.Interact(this);
+				}
+			}
+        }
+    }
 }

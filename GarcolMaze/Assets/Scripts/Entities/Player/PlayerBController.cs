@@ -39,7 +39,7 @@ public class PlayerBController : PlayerController
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            collectItems();
+            collectItems(collider.bounds.center, PICKUP_RANGE);
         }
     }
 
@@ -48,20 +48,6 @@ public class PlayerBController : PlayerController
         if (movement != null)
         {
             rigidbody.velocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed);
-        }
-    }
-
-    private void collectItems()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(collider.bounds.center, PICKUP_RANGE);
-        foreach (Collider2D c in colliders)
-        {
-            Collectable item = c.GetComponent<Collectable>();
-            if (item != null)
-            {
-                item.Collect(this);
-                Destroy(item.gameObject);
-            }
         }
     }
 }
