@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 
 
-public class MoveableObjects : MonoBehaviour
+public class Moveable : MonoBehaviour
 {
     public Vector3 closePosition;
     public Vector3 openPosition;

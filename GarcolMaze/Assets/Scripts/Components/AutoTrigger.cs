@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class Obstacle : MonoBehaviour
+// Objects need to have a collider to trigger this
+abstract public class AutoTrigger : MonoBehaviour
 {
     Collider2D _collider;
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         _collider = GetComponent<Collider2D>();
         _collider.isTrigger = true;
