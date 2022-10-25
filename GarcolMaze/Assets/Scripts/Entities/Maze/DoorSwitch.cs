@@ -1,16 +1,11 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DoorSwitch : MonoBehaviour, IPointerClickHandler
+public class DoorSwitch : Interactable
 {
     const int MAX_DOOR_CNT = 4;
-    public MoveableObjects[] moveables = new MoveableObjects[MAX_DOOR_CNT];
+    public Moveable[] moveables = new Moveable[MAX_DOOR_CNT];
     bool flippedX = true;
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        ToggleAllDoors();
-    }
 
     public void ToggleAllDoors()
     {
@@ -23,6 +18,11 @@ public class DoorSwitch : MonoBehaviour, IPointerClickHandler
             }
         }
         flippedX = !flippedX;
+    }
+
+    public override void Interact(PlayerController player)
+    {
+        ToggleAllDoors();
     }
 
     // Start is called before the first frame update

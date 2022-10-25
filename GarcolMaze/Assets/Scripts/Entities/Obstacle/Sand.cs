@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-public class Sand : Obstacle
+public class Sand : AutoTrigger
 {
     public override void applyEffect(Collider2D other)
     {
@@ -19,10 +19,4 @@ public class Sand : Obstacle
             other.attachedRigidbody.drag = 0;
         }
     }
-
-    // Use this for initialization
-    void Start(){}
-
-    // Update is called once per frame
-    void Update(){}
 }
