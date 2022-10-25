@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float moveSpeed = 3f;
+
     protected int[] trashCountTotal = new int[] { 0, 0, 0 };
     protected int[] trashCountCurrent = new int[] { 0, 0, 0 };
+
 
     public void CollectTrashItem(TrashType trashType) {
         ++trashCountCurrent[(int)trashType];
@@ -38,4 +41,17 @@ public class PlayerController : MonoBehaviour
 			}
         }
     }
+
+    // functionality
+
+    public void boostSpeed(float effectSpeed, int boostedTime)
+	{
+        moveSpeed += effectSpeed;
+        StartCoroutine(speedTime());
+        IEnumerator speedTime()
+		{
+            yield return new WaitForSeconds(boostedTime);
+            moveSpeed -= effectSpeed;
+		}
+	}
 }
