@@ -8,6 +8,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 	private static GameManager _instance = null;
 	public EnemyManager enemyManager = null;
+	public BoardManager boardManager = null;
 
 	public static GameManager instance
 	{
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
 		enemyManager = GetComponent<EnemyManager>();
+		boardManager = GetComponent<BoardManager>();
 
         //Call the InitGame function to initialize the first level 
         InitGame();
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour {
 
 	private void InitGame()
 	{
+		boardManager.GenerateEnemy(10);
 	}
 
 	void Update() {
