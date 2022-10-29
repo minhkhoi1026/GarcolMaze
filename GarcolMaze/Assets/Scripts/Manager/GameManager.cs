@@ -43,7 +43,8 @@ public class GameManager : MonoBehaviour {
 
 	private void InitGame()
 	{
-		boardManager.GenerateEnemy(10);
+		// TODO: EnemyManager should contain a list of enemy, this load is slow
+		boardManager.GenerateItem(enemyManager.enemyList[0], 10);
 	}
 
 	void Update() {

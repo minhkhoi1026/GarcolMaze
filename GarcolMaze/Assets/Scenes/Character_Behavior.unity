@@ -1641,6 +1641,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb36fcc50f04c448b61eb40920a09dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyList:
+  - {fileID: 830648870338450056, guid: 5793fa6d1b92b7a4493477f6024fb8ff, type: 3}
 --- !u!114 &309864056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1654,8 +1656,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileMap: {fileID: 2070968644}
-  enemyTypes:
-  - {fileID: 830648870338450056, guid: 5793fa6d1b92b7a4493477f6024fb8ff, type: 3}
 --- !u!114 &309864057
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,8 +9,6 @@ public class BoardManager : MonoBehaviour
     [SerializeField]
     private Tilemap tileMap;
 
-    public List<GameObject> enemyTypes;
-
     private void ConstructAvailableLocationOfTiles()
 	{
         availableCells = new List<Vector3>();
@@ -34,7 +32,7 @@ public class BoardManager : MonoBehaviour
 	}
 
     // TODO: pass array of number of enemies type
-    public void GenerateEnemy(int numberOfEnemies)
+    public void GenerateItem(GameObject enemy, int numberOfEnemies)
 	{
         if (availableCells == null)
 		{
@@ -45,7 +43,7 @@ public class BoardManager : MonoBehaviour
             int randomIndex = Random.Range(0, availableCells.Count);
             Vector3 randomPosition = availableCells[randomIndex];
             // TODO: call EnemyManager
-            Instantiate(enemyTypes[0], new Vector3(randomPosition.x + 0.5f, randomPosition.y + 0.5f, randomPosition.z), Quaternion.identity);
+            Instantiate(enemy, new Vector3(randomPosition.x + 0.5f, randomPosition.y + 0.5f, randomPosition.z), Quaternion.identity);
         }
 	}
 }
