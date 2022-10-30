@@ -6,7 +6,6 @@ public class PlayerBController : PlayerController
 {
     public const float PICKUP_RANGE = 0.5f;
 
-    public float moveSpeed = 5f;
     Rigidbody2D rigidbody;
     Collider2D collider;
     Animator animator;
