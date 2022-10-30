@@ -10,7 +10,6 @@ public class PlayerAController : PlayerController
     Collider2D collider;    
     Animator animator;
 
-    Vector2 movement;
     // Start is called before the first frame update
     void Start()
     {

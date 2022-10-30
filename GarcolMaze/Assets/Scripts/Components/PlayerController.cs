@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     protected int[] trashCountTotal = new int[] { 0, 0, 0 };
     protected int[] trashCountCurrent = new int[] { 0, 0, 0 };
 
-
+    protected Vector2 movement;
     public void CollectTrashItem(TrashType trashType) {
         ++trashCountCurrent[(int)trashType];
         Debug.Log(trashType.ToString());
