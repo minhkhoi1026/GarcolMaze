@@ -1,31 +1,7 @@
 fileFormatVersion: 2
-guid: 68e90e05600e38c4e9a978e3f20a8e78
+guid: fdf54e3d20bb970489d77509b2399d88
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 657518720465702780
-    second: wooden_door_b_0
-  - first:
-      213: -5152539529391962773
-    second: wooden_door_b_1
-  - first:
-      213: -2422505273956291874
-    second: wooden_door_b_2
-  - first:
-      213: 1238998674687473940
-    second: wooden_door_b_3
-  - first:
-      213: 590508825719465098
-    second: wooden_door_b_4
-  - first:
-      213: -4293768055490540712
-    second: wooden_door_b_5
-  - first:
-      213: 6356846396448879066
-    second: wooden_door_b_6
-  - first:
-      213: -5112898970024434554
-    second: wooden_door_b_7
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -65,7 +41,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,53 +89,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: wooden_door_b_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 0.5, y: 0.1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: -8}
-        - {x: -8, y: 8}
-        - {x: 8, y: 8}
-        - {x: 8, y: -8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7f0786eac9ff1900800000000000000
-      internalID: 657518720465702780
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wooden_door_b_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b650f6be8908e78b0800000000000000
-      internalID: -5152539529391962773
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []

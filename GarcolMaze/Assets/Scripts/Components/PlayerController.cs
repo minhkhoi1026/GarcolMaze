@@ -9,20 +9,30 @@ public class PlayerController : MonoBehaviour
     protected int[] trashCountTotal = new int[] { 0, 0, 0 };
     protected int[] trashCountCurrent = new int[] { 0, 0, 0 };
 
+    public CollectableStats collectableStats;
 
-    public void CollectTrashItem(TrashType trashType) {
+    public void CollectTrashItem(TrashType trashType)
+    {
         ++trashCountCurrent[(int)trashType];
         Debug.Log(trashType.ToString());
     }
 
     public void TakeOutTrash(TrashType trashType)
-	{
+    {
         trashCountTotal[(int)trashType] += trashCountCurrent[(int)trashType];
         trashCountCurrent[(int)trashType] = 0;
-	}
+
+        if (collectableStats != null)
+        {
+            int recycleableCnt = trashCountTotal[(int)TrashType.Recyclable];
+            int nonRecycleableCnt = trashCountTotal[(int)TrashType.NonRecyclable];
+            int organicCnt = trashCountTotal[(int)TrashType.Organic];
+            collectableStats.UpdateStats(recycleableCnt, nonRecycleableCnt, organicCnt);
+        }
+    }
 
     protected void collectItems(Vector2 position, float pickupRange)
-	{
+    {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(position, pickupRange);
         foreach (Collider2D c in colliders)
         {
@@ -31,14 +41,15 @@ public class PlayerController : MonoBehaviour
             {
                 item.Collect(this);
                 Destroy(item.gameObject);
-            } else
-			{
+            }
+            else
+            {
                 Interactable interactableObj = c.GetComponent<Interactable>();
                 if (interactableObj != null)
-				{
+                {
                     interactableObj.Interact(this);
-				}
-			}
+                }
+            }
         }
     }
 
