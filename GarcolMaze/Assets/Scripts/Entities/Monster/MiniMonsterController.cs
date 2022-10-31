@@ -3,57 +3,105 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
+using UnityEngine.UIElements;
+using System.IO;
+using Unity.Mathematics;
 
 public class MiniMonsterController : MonoBehaviour {
-    public float speed;
-    public bool vertical;
-    public float changeTime = 3.0f;
+    private GameObject[] players;
+    NavMeshAgent agent;
+    Vector3 target;
+    Vector2 velocity = Vector2.zero;
+    Vector2 smoothDeltaPosition = Vector2.zero;
 
-    Rigidbody2D rigidbody2D;
-    float timer;
-    int direction = 1;
+    float direction = 1;
 
     Animator animator;
 
-    // Start is called before the first frame update
-    void Start()
+    public float speed = 1;
+    public float chaseRadius = 3;
+    public Vector3 startPosition;
+
+    private void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
-        timer = changeTime;
         animator = GetComponent<Animator>();
+
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.autoBraking = true;
+        agent.speed = speed;
+
+        startPosition = transform.position;
+        players = GameObject.FindGameObjectsWithTag("Player");
     }
 
-    void Update()
+    private void Update()
     {
-        timer -= Time.deltaTime;
-
-        if (timer < 0)
-        {
-            direction = -direction;
-            timer = changeTime;
-        }
-
-        if (!vertical)
-        {
-            animator.SetFloat("Move Direction", direction);
-        }
-
+        SetTargetPosition();
+        SetAgentPosition();
+        SetEnemyAnimator();
     }
 
-    void FixedUpdate()
+    private void SetEnemyAnimator()
     {
-        Vector2 position = rigidbody2D.position;
+        direction = target.x - transform.position.x;
+        direction = Math.Min(1, Math.Max(direction, -1));
+        animator.SetFloat("Move Direction", direction);
+    }
 
-        if (vertical)
-        {
-            position.y = position.y + Time.deltaTime * speed * direction; ;
-        }
-        else
-        {
-            position.x = position.x + Time.deltaTime * speed * direction; ;
-        }
+    private void SetTargetPosition()
+    {
+        // default target is start position
+        // target = startPosition;
 
-        rigidbody2D.MovePosition(position);
+        float minDist = float.MaxValue;
+
+        // choose nearest player
+        foreach (GameObject player in players)
+        {
+            // ignore player outside chase circle
+            if (!isInChaseCircle(player.transform.position))
+                continue;      
+
+            float dist = calcDist(player.transform.position);
+
+            if (dist < minDist)
+            {
+                minDist = dist;
+                target = player.transform.position;
+            }
+        }
+    }
+
+    private bool isInChaseCircle(Vector3 position)
+    {
+        return Vector2.Distance(startPosition, position) <= chaseRadius;
+    }
+
+    // calculate distance from monster to player,
+    // if cannot find path then return max_path + 1
+    private float calcDist(Vector3 position)
+    {
+        NavMeshPath path = new NavMeshPath();
+
+        if (agent.CalculatePath(position, path))
+        {
+            float distance = Vector2.Distance(transform.position, path.corners[0]);
+
+            for (int j = 1; j < path.corners.Length; j++)
+            {
+                distance += Vector2.Distance(path.corners[j - 1], path.corners[j]);
+            }
+
+            return distance;
+        }
+        return float.MaxValue;
+    }
+
+    private void SetAgentPosition()
+    {
+        agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
     }
 }
