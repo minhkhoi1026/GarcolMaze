@@ -5,13 +5,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 3f;
+    private HealthSystem healthSystem;
 
     protected int[] trashCountTotal = new int[] { 0, 0, 0 };
     protected int[] trashCountCurrent = new int[] { 0, 0, 0 };
 
     public CollectableStats collectableStats;
+    public HealthBar healthBar;
 
-    public void CollectTrashItem(TrashType trashType)
+	private void Awake()
+	{
+		healthSystem = new HealthSystem(this);
+        healthSystem.InitHP(100);
+	}
+
+	public void CollectTrashItem(TrashType trashType)
     {
         ++trashCountCurrent[(int)trashType];
         Debug.Log(trashType.ToString());
@@ -64,5 +72,20 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(boostedTime);
             moveSpeed -= effectSpeed;
 		}
+	}
+
+    public void Damage(int point)
+	{
+        healthSystem.ChangeHP(-point);
+	}
+
+    public void Heal(int point)
+	{
+        healthSystem.ChangeHP(point);
+	}
+
+    public void Die()
+	{
+        Destroy(gameObject);
 	}
 }
