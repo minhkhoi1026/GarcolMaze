@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour {
 	public EnemyManager enemyManager = null;
 	public BoardManager boardManager = null;
 
-	public static GameManager instance
+    public float miniMonsterSpawnTime = 0f;
+
+    public static GameManager instance
 	{
 		get
 		{
@@ -43,8 +45,12 @@ public class GameManager : MonoBehaviour {
 
 	private void InitGame()
 	{
-		// TODO: EnemyManager should contain a list of enemy, this load is slow
-		boardManager.GenerateItem(enemyManager.enemyList[0], 10);
+		int nMonster = 2;
+		List<Vector3> monsterPositionList = boardManager.GenerateRandomPosition(nMonster);
+		for (int i = 0; i < monsterPositionList.Count; i++)
+		{
+			enemyManager.SpawnMonster(monsterPositionList[i], "MiniMonster");
+		}
 	}
 
 	void Update() {

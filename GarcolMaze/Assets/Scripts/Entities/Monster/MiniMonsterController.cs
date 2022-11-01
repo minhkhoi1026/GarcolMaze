@@ -8,12 +8,10 @@ using UnityEngine.UIElements;
 using System.IO;
 using Unity.Mathematics;
 
-public class MiniMonsterController : MonoBehaviour {
+public class MiniMonsterController : MonsterController {
     private GameObject[] players;
     NavMeshAgent agent;
     Vector3 target;
-    Vector2 velocity = Vector2.zero;
-    Vector2 smoothDeltaPosition = Vector2.zero;
 
     float direction = 1;
 
@@ -34,6 +32,7 @@ public class MiniMonsterController : MonoBehaviour {
         agent.speed = speed;
 
         startPosition = transform.position;
+        target = startPosition;
         players = GameObject.FindGameObjectsWithTag("Player");
     }
 
@@ -46,6 +45,7 @@ public class MiniMonsterController : MonoBehaviour {
 
     private void SetEnemyAnimator()
     {
+        // change direction so the monster will facing player
         direction = target.x - transform.position.x;
         direction = Math.Min(1, Math.Max(direction, -1));
         animator.SetFloat("Move Direction", direction);
@@ -66,6 +66,7 @@ public class MiniMonsterController : MonoBehaviour {
                 continue;      
 
             float dist = calcDist(player.transform.position);
+            Debug.Log(dist);
 
             if (dist < minDist)
             {
@@ -100,8 +101,15 @@ public class MiniMonsterController : MonoBehaviour {
         return float.MaxValue;
     }
 
+
     private void SetAgentPosition()
     {
         agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+    }
+
+    public override void Freeze()
+    {
+        agent.speed = 0;
+        // TODO: add particle animation for freeze
     }
 }
