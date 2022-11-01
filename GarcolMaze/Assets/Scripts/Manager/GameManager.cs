@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	public BoardManager boardManager = null;
 
     public float miniMonsterSpawnTime = 0f;
+    public int nInitialMonster = 10;
 
     public static GameManager instance
 	{
@@ -45,8 +46,7 @@ public class GameManager : MonoBehaviour {
 
 	private void InitGame()
 	{
-		int nMonster = 2;
-		List<Vector3> monsterPositionList = boardManager.GenerateRandomPosition(nMonster);
+		List<Vector3> monsterPositionList = boardManager.GenerateRandomPosition(nInitialMonster);
 		for (int i = 0; i < monsterPositionList.Count; i++)
 		{
 			enemyManager.SpawnMonster(monsterPositionList[i], "MiniMonster");
