@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public CollectableStats collectableStats;
     public HealthBar healthBar;
+    public GameObject textGUI;
 
     protected Vector2 movement;
 	private void Awake()
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
     public void Damage(int point, string animationType = "Hit")
 	{
         animator.SetTrigger(animationType);
+        TextShow.showTextAbove(gameObject, textGUI, "-" + point);
         healthSystem.ChangeHP(-point);
 	}
 
