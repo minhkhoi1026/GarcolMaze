@@ -59,7 +59,7 @@ public class BoardManager : MonoBehaviour
         {
             int randomIndex = Random.Range(0, availableCells.Count);
             Vector3 randomPosition = availableCells[randomIndex];
-
+            randomPosition = new Vector3(randomPosition.x + 0.5f, randomPosition.y + 0.5f, randomPosition.z);
             result.Add(randomPosition);
         }
 
