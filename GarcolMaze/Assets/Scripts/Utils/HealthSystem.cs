@@ -20,20 +20,25 @@ public class HealthSystem
 
     public void InitHP(int point)
 	{
+		if (playerController == null)
+			return;
         maxHP = HP = point;
-		playerController?.healthBar?.setMaxHealth(maxHP);
+		playerController.healthBar?.setMaxHealth(maxHP);
 	}
 
     public void ChangeHP(int point)
 	{
-        HP += point;
-		if (HP > maxHP) { 
+		if (playerController == null)
+			return;
+		HP += point;
+		if (HP > maxHP) {
+			point = 0;
 			HP = maxHP; 
 		}
-		playerController?.healthBar?.setHealth(HP < 0 ? 0 : HP);
+		playerController.healthBar?.setHealth(HP < 0 ? 0 : HP);
         if (HP <= 0)
 		{
-			playerController?.Die();
+			playerController.Die();
 		}
 	}
 }
