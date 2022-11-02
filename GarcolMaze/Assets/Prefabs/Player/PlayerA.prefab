@@ -141,6 +141,7 @@ MonoBehaviour:
   moveSpeed: 5
   collectableStats: {fileID: 0}
   healthBar: {fileID: 0}
+  textGUI: {fileID: 8763267784013490953, guid: 3e7cdab31cad4e5478bd7870fc9de18e, type: 3}
 --- !u!70 &644511242
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
