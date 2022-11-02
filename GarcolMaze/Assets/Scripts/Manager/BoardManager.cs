@@ -12,19 +12,18 @@ public class BoardManager : MonoBehaviour
     private void ConstructAvailableLocationOfTiles()
 	{
         availableCells = new List<Vector3>();
-        for (int i = tileMap.cellBounds.xMin + 1; i < tileMap.cellBounds.xMax - 1; i++)
+        for (int i = tileMap.cellBounds.xMin + 2; i < tileMap.cellBounds.xMax - 1; i++)
 		{
-            for (int j = tileMap.cellBounds.yMin + 1; j < tileMap.cellBounds.yMax - 1; j++)
+            for (int j = tileMap.cellBounds.yMin + 2; j < tileMap.cellBounds.yMax - 1; j++)
 			{
                 Vector3Int localPlace = new Vector3Int(i, j, (int)tileMap.transform.position.y);
                 Vector3 place = tileMap.CellToWorld(localPlace);
                 if (tileMap.HasTile(localPlace))
 				{
-                    
+                    availableCells.Add(place);
                 }
                 else
 				{
-                    availableCells.Add(place);
                 }
             }
 		}
