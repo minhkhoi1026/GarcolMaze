@@ -8,13 +8,11 @@ public class PlayerBController : PlayerController
 
     Rigidbody2D rigidbody;
     Collider2D collider;
-    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
     }
 
