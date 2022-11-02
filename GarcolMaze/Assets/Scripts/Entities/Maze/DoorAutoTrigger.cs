@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorAutoTrigger : AutoTrigger
 {
-    const int MAX_DOOR_CNT = 4;
+    const int MAX_DOOR_CNT = 16;
     public Moveable[] moveables = new Moveable[MAX_DOOR_CNT];
     public string canTriggerTag = "ANY_TAG";
     public Sprite btnUpSprite;
@@ -15,7 +15,8 @@ public class DoorAutoTrigger : AutoTrigger
 
     public void ToggleAllDoors()
     {
-        for (int i = 0; i < MAX_DOOR_CNT; i++)
+        int n = moveables.Length;
+        for (int i = 0; i < n; i++)
         {
             if (moveables[i] != null)
             {

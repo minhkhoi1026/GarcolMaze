@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    protected Animator animator;
+
     public float moveSpeed = 3f;
     private HealthSystem healthSystem;
 
@@ -13,13 +15,16 @@ public class PlayerController : MonoBehaviour
     public CollectableStats collectableStats;
     public HealthBar healthBar;
 
+    protected Vector2 movement;
 	private void Awake()
 	{
 		healthSystem = new HealthSystem(this);
         healthSystem.InitHP(100);
-	}
+        animator = GetComponent<Animator>();
 
-	public void CollectTrashItem(TrashType trashType)
+    }
+
+    public void CollectTrashItem(TrashType trashType)
     {
         ++trashCountCurrent[(int)trashType];
         Debug.Log(trashType.ToString());
@@ -27,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
     public void TakeOutTrash(TrashType trashType)
     {
+        if (trashCountCurrent[(int)trashType] == 0)
+            return;
         trashCountTotal[(int)trashType] += trashCountCurrent[(int)trashType];
         trashCountCurrent[(int)trashType] = 0;
 
@@ -74,8 +81,9 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-    public void Damage(int point)
+    public void Damage(int point, string animationType = "Hit")
 	{
+        animator.SetTrigger(animationType);
         healthSystem.ChangeHP(-point);
 	}
 

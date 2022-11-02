@@ -108,7 +108,7 @@ public class MiniMonsterController : MonsterController {
         agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
     }
 
-    public override void Freeze()
+    public override void Freeze(float freezeTime)
     {
         agent.speed = 0;
 
@@ -117,5 +117,14 @@ public class MiniMonsterController : MonsterController {
         // add particle animation for freeze
         Instantiate(freezeAnimation, transform.position, Quaternion.identity);
 
+        StartCoroutine(freezing());
+        IEnumerator freezing()
+        {
+            // freeze for freezeTime seconds
+            yield return new WaitForSeconds(freezeTime);
+            // revert state
+            agent.speed = speed;
+        }
+        // TODO: add particle animation for freeze
     }
 }
