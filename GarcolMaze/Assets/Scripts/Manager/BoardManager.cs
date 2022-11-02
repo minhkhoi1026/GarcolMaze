@@ -32,18 +32,37 @@ public class BoardManager : MonoBehaviour
 	}
 
     // TODO: pass array of number of enemies type
-    public void GenerateItem(GameObject enemy, int numberOfEnemies)
+    public void GenerateItem(GameObject item, int numberOfItem)
 	{
         if (availableCells == null)
 		{
             ConstructAvailableLocationOfTiles();
 		}
-        for (int i = 0; i < numberOfEnemies; ++i)
+        for (int i = 0; i < numberOfItem; ++i)
 		{
             int randomIndex = Random.Range(0, availableCells.Count);
             Vector3 randomPosition = availableCells[randomIndex];
-            // TODO: call EnemyManager
-            Instantiate(enemy, new Vector3(randomPosition.x + 0.5f, randomPosition.y + 0.5f, randomPosition.z), Quaternion.identity);
+            Instantiate(item, new Vector3(randomPosition.x + 0.5f, randomPosition.y + 0.5f, randomPosition.z), Quaternion.identity);
         }
 	}
+
+    public List<Vector3> GenerateRandomPosition(int n)
+    {
+        if (availableCells == null)
+        {
+            ConstructAvailableLocationOfTiles();
+        }
+
+        List<Vector3> result = new List<Vector3>();
+
+        for (int i = 0; i < n; ++i)
+        {
+            int randomIndex = Random.Range(0, availableCells.Count);
+            Vector3 randomPosition = availableCells[randomIndex];
+
+            result.Add(randomPosition);
+        }
+
+        return result;
+    }
 }
