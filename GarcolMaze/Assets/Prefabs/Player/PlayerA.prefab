@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 3083089168873209362, guid: ab29f7ce3e221ca4c849a3c8ecc58db2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -139,6 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  collectableStats: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!70 &644511242
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
