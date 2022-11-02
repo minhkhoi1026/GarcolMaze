@@ -7,6 +7,8 @@ using UnityEngine.AI;
 using UnityEngine.UIElements;
 using System.IO;
 using Unity.Mathematics;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 public class MiniMonsterController : MonsterController {
     private GameObject[] players;
@@ -16,6 +18,8 @@ public class MiniMonsterController : MonsterController {
     float direction = 1;
 
     Animator animator;
+    public GameObject freezeAnimationPrefab;
+    GameObject freeze_effect;
 
     public float speed = 1;
     public float chaseRadius = 3;
@@ -66,7 +70,6 @@ public class MiniMonsterController : MonsterController {
                 continue;      
 
             float dist = calcDist(player.transform.position);
-            Debug.Log(dist);
 
             if (dist < minDist)
             {
@@ -109,15 +112,50 @@ public class MiniMonsterController : MonsterController {
 
     public override void Freeze(float freezeTime)
     {
+        // stop movement
         agent.speed = 0;
+        // stop animation
+        animator.speed = 0;
+        // set isFreezed to true
+        isFreezed = true;
+        // add particle animation for freeze
+        freeze_effect = Instantiate(freezeAnimationPrefab, transform.position, Quaternion.identity, transform);
+
         StartCoroutine(freezing());
         IEnumerator freezing()
         {
             // freeze for freezeTime seconds
             yield return new WaitForSeconds(freezeTime);
             // revert state
+            // destroy freeze effect
+            Destroy(freeze_effect);
+            // set isFreezed to false
+            isFreezed = false;
+            // continue animation
+            animator.speed = 1;
+            // continue move
             agent.speed = speed;
         }
-        // TODO: add particle animation for freeze
+    }
+
+    protected override void InteractWhenHitPlayer(PlayerController player)
+    {
+        if (player == null) return;
+
+        
+        if (!isFreezed)
+        {
+            player.Damage(damagePoint);
+        }
+        else
+        {
+            // TODO: add dead animation
+            // play ice broke effect
+            freeze_effect.GetComponent<Animator>().SetTrigger("IsBroke");
+            // continue animation
+            animator.speed = 1;
+            // play dead animation, on exit it will destroy our monster
+            animator.SetTrigger("IsHitted");
+        }
     }
 }

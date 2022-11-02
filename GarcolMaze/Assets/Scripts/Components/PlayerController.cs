@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
     public void CollectTrashItem(TrashType trashType)
     {
         ++trashCountCurrent[(int)trashType];
-        Debug.Log(trashType.ToString());
     }
 
     public void TakeOutTrash(TrashType trashType)
