@@ -3063,6 +3063,10 @@ PrefabInstance:
       propertyPath: tileMap
       value: 
       objectReference: {fileID: 1561812111}
+    - target: {fileID: 1455257323297087710, guid: 631526b8c248b8948a3347f94483ca79, type: 3}
+      propertyPath: nInitialMonster
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1455257323297087711, guid: 631526b8c248b8948a3347f94483ca79, type: 3}
       propertyPath: m_RootOrder
       value: 39

@@ -45,7 +45,7 @@ public class BoardManager : MonoBehaviour
         }
 	}
 
-    public List<Vector3> GenerateRandomPosition(int n)
+    public List<Vector3> GenerateRandomPosition(int n, Vector3[] positions, float minDistance = 0f)
     {
         if (availableCells == null)
         {
@@ -54,10 +54,34 @@ public class BoardManager : MonoBehaviour
 
         List<Vector3> result = new List<Vector3>();
 
+        float getDistance(Vector3 pos)
+		{
+            // replace euler distance by manhatan distance -> reduce time complexity
+            float getManhattanDistance(Vector3 A, Vector3 B)
+			{
+                return Mathf.Abs(A.x - B.x) + Mathf.Abs(A.y - B.y);
+			}
+            float minDist = getManhattanDistance(pos, positions[0]);
+            for (int i = 1; i < positions.Length; ++i)
+			{
+                float curDist = getManhattanDistance(pos, positions[i]);
+                if (curDist < minDist)
+                    minDist = curDist; 
+			}
+            return minDist;
+		}
+
         for (int i = 0; i < n; ++i)
         {
             int randomIndex = Random.Range(0, availableCells.Count);
             Vector3 randomPosition = availableCells[randomIndex];
+            // warning: this code maybe infinity loop, fix later
+            while (getDistance(randomPosition) < minDistance)
+			{
+                randomIndex = Random.Range(0, availableCells.Count);
+                randomPosition = availableCells[randomIndex];
+            }
+            Debug.Log(getDistance(randomPosition));
             randomPosition = new Vector3(randomPosition.x + 0.5f, randomPosition.y + 0.5f, randomPosition.z);
             result.Add(randomPosition);
         }
