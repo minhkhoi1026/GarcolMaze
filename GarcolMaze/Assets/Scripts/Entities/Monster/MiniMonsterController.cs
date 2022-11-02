@@ -16,6 +16,7 @@ public class MiniMonsterController : MonsterController {
     float direction = 1;
 
     Animator animator;
+    public GameObject freezeAnimation;
 
     public float speed = 1;
     public float chaseRadius = 3;
@@ -110,6 +111,11 @@ public class MiniMonsterController : MonsterController {
     public override void Freeze()
     {
         agent.speed = 0;
-        // TODO: add particle animation for freeze
+
+        // stop animation
+        animator.speed = 0;
+        // add particle animation for freeze
+        Instantiate(freezeAnimation, transform.position, Quaternion.identity);
+
     }
 }

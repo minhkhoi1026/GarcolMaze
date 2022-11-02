@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b6c40bd30304149be18bea52fe480a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  freezeAnimation: {fileID: 9204303679364775731, guid: 9cb2b2b48b207884db3f7a5aff69e931, type: 3}
   speed: 1
   chaseRadius: 2
   startPosition: {x: 0, y: 0, z: 0}
