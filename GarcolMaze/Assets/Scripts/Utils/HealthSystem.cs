@@ -21,7 +21,7 @@ public class HealthSystem
     public void InitHP(int point)
 	{
         maxHP = HP = point;
-		playerController?.healthBar?.setHealth(maxHP);
+		playerController?.healthBar?.setMaxHealth(maxHP);
 	}
 
     public void ChangeHP(int point)
