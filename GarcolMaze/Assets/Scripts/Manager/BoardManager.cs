@@ -81,7 +81,6 @@ public class BoardManager : MonoBehaviour
                 randomIndex = Random.Range(0, availableCells.Count);
                 randomPosition = availableCells[randomIndex];
             }
-            Debug.Log(getDistance(randomPosition));
             randomPosition = new Vector3(randomPosition.x + 0.5f, randomPosition.y + 0.5f, randomPosition.z);
             result.Add(randomPosition);
         }
