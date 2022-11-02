@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour
+public abstract class Collectable : MonoBehaviour
 {
-	public virtual void Collect(PlayerController player) { }
-	public virtual void Use() { }
+	public abstract void Collect(PlayerController player);
+	public abstract void Use();
 }
