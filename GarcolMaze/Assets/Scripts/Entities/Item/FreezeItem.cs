@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class FreezeItem : Collectable
 {
+	public float freezeTime = 3f;
 	public override void Collect(PlayerController player)
 	{
-		throw new System.NotImplementedException();
+		GameManager.instance.enemyManager.FreezeAllMiniMonster(freezeTime);
 	}
 
 	public override void Use()
