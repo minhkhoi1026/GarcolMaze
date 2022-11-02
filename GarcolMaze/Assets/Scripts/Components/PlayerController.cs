@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     public void TakeOutTrash(TrashType trashType)
     {
+        if (trashCountCurrent[(int)trashType] == 0)
+            return;
         trashCountTotal[(int)trashType] += trashCountCurrent[(int)trashType];
         trashCountCurrent[(int)trashType] = 0;
 
