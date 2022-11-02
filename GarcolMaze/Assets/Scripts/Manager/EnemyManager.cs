@@ -28,12 +28,12 @@ public class EnemyManager : MonoBehaviour {
 		enemyList.Add(newMonster);
 	}
 
-	public void FreezeAllMiniMonster()
+	public void FreezeAllMiniMonster(float freezeTime)
 	{
 		foreach (GameObject monster in enemyList)
 		{
 			MonsterController controller = monster.GetComponent<MonsterController>();
-			controller.Freeze();
+			controller.Freeze(freezeTime);
 		}
 	}
 

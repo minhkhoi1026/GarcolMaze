@@ -14,5 +14,5 @@ public abstract class MonsterController : MonoBehaviour {
 		
 	}
 
-	public abstract void Freeze();
+	public abstract void Freeze(float freezeTime);
 }
