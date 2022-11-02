@@ -46,12 +46,18 @@ public class GameManager : MonoBehaviour {
 
 	private void InitGame()
 	{
-		List<Vector3> monsterPositionList = boardManager.GenerateRandomPosition(nInitialMonster);
+		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+		List<Vector3> monsterPositionList = boardManager.GenerateRandomPosition(nInitialMonster, 
+			new Vector3[] {players[0].transform.position, players[1].transform.position},
+			6f);
 		for (int i = 0; i < monsterPositionList.Count; i++)
 		{
 			enemyManager.SpawnMonster(monsterPositionList[i], "MiniMonster");
 		}
 	}
+
+
 
 	void Update() {
 		

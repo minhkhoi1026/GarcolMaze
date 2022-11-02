@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public CollectableStats collectableStats;
     public HealthBar healthBar;
-
+    protected Vector2 movement;
 	private void Awake()
 	{
 		healthSystem = new HealthSystem(this);

@@ -48,6 +48,7 @@ MonoBehaviour:
   enemyManager: {fileID: 0}
   boardManager: {fileID: 0}
   miniMonsterSpawnTime: 0
+  nInitialMonster: 3
 --- !u!114 &1455257323297087709
 MonoBehaviour:
   m_ObjectHideFlags: 0
