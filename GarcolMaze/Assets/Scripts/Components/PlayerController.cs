@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
 
     protected void collectItems(Vector2 position, float pickupRange)
     {
-        Damage(10);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(position, pickupRange);
         foreach (Collider2D c in colliders)
         {
@@ -82,9 +81,9 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-    public void Damage(int point)
+    public void Damage(int point, string animationType = "Hit")
 	{
-        animator.SetTrigger("IsHit");
+        animator.SetTrigger(animationType);
         healthSystem.ChangeHP(-point);
 	}
 
