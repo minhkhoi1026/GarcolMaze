@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 2
+  dialogPrefab: {fileID: 4763548751032063450, guid: f1dce4b244b73784d84162c9ed247938, type: 3}
 --- !u!61 &2075039108
 BoxCollider2D:
   m_ObjectHideFlags: 0
