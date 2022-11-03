@@ -3,14 +3,15 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 
 public abstract class MonsterController : MonoBehaviour {
 	public int damagePoint = 5;
 	protected bool isFreezed;
 
-	void Start() {
-		isFreezed = false;
+    private void Start()
+    {
+        isFreezed = false;
     }
 
 	void Update() {
