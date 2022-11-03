@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour {
 
 	private void InitGame()
 	{
+		Debug.Log(PlayerPrefs.GetInt("SkinA"));
 		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
 		List<Vector3> monsterPositionList = boardManager.GenerateRandomPosition(nInitialMonster, 

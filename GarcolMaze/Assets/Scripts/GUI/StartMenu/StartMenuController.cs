@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class StartMenuController : MonoBehaviour
 {
     public GameObject chooseLevelUI;
     public GameObject chooseSkinUI;
+
     // Use this for initialization
     void Start()
     {
@@ -33,5 +34,10 @@ public class StartMenuController : MonoBehaviour
     public void SelectSkin()
 	{
         chooseSkinUI.SetActive(true);
+	}
+
+    public void ConfirmSkin()
+	{
+        chooseSkinUI.SetActive(false);
 	}
 }
