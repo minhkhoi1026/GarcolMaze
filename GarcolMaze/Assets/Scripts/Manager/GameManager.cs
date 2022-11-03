@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 	private static GameManager _instance = null;
 	public EnemyManager enemyManager = null;
 	public BoardManager boardManager = null;
+	public PlayerManager playerManager = null;
 
     public float miniMonsterSpawnTime = 0f;
     public int nInitialMonster = 10;
@@ -36,7 +37,8 @@ public class GameManager : MonoBehaviour {
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
-
+		
+		playerManager = GetComponent<PlayerManager>();
 		enemyManager = GetComponent<EnemyManager>();
 		boardManager = GetComponent<BoardManager>();
 
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour {
 
 	private void InitGame()
 	{
+		Debug.Log(PlayerPrefs.GetInt("SkinA"));
 		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
 		List<Vector3> monsterPositionList = boardManager.GenerateRandomPosition(nInitialMonster, 
