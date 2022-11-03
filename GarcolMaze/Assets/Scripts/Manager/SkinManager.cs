@@ -18,7 +18,6 @@ public class SkinManager : MonoBehaviour
         selectedSkin++;
         if (selectedSkin >= skins.Count)
             selectedSkin = 0;
-        Debug.Log(selectedSkin);
         sprite.sprite = skins[selectedSkin];
 	} 
 

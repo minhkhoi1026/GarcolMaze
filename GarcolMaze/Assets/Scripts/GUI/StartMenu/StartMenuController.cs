@@ -5,15 +5,18 @@ using UnityEngine.SceneManagement;
 public class StartMenuController : MonoBehaviour
 {
     public GameObject chooseLevelUI;
+    public GameObject chooseSkinUI;
     // Use this for initialization
     void Start()
     {
         chooseLevelUI.SetActive(false);
+        chooseSkinUI.SetActive(false);
     }
 
     public void Escape()
     {
         chooseLevelUI.SetActive(false);
+        chooseSkinUI.SetActive(false);
     }
 
     public void StartGame()
@@ -26,4 +29,9 @@ public class StartMenuController : MonoBehaviour
         SceneManager.LoadScene("Level_" + index.ToString());
 
     }
+
+    public void SelectSkin()
+	{
+        chooseSkinUI.SetActive(true);
+	}
 }
