@@ -102,7 +102,7 @@ BlendTree:
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
-    m_DirectBlendParameter: Direction
+    m_DirectBlendParameter: Move Direction
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: bd688b204ecc10a4f90d346ea0bec3d5, type: 2}
