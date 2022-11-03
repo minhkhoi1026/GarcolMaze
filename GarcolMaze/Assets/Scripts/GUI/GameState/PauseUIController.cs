@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIController : MonoBehaviour
+public class PauseUIController : MonoBehaviour
 {
     public static bool isGamePause = false;
-    public GameObject pauseMenuUI;
+    public GameObject menuUI;
 
     private void Start()
     {
@@ -32,14 +32,14 @@ public class UIController : MonoBehaviour
 
     public void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        menuUI.SetActive(true);
         Time.timeScale = 0f;
         isGamePause = true;
     }
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        menuUI.SetActive(false);
         Time.timeScale = 1f;
         isGamePause = false;
     }
