@@ -112,6 +112,7 @@ public class MiniMonsterController : MonsterController {
 
     public override void Freeze(float freezeTime)
     {
+        if (isFreezed) return;
         // stop movement
         agent.speed = 0;
         // stop animation
