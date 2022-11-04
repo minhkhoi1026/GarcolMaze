@@ -119,7 +119,8 @@ public class BossMonsterController : MonsterController {
         // set isFreezed to true
         isFreezed = true;
         // add particle animation for freeze
-        freeze_effect = Instantiate(freezeAnimationPrefab, transform.position, Quaternion.identity, transform);
+        freeze_effect = Instantiate(freezeAnimationPrefab, transform.position + 0.5f*transform.up, Quaternion.identity, transform);
+        freeze_effect.transform.localScale *= 2.0f;
 
         StartCoroutine(freezing());
         IEnumerator freezing()

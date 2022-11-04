@@ -81,7 +81,6 @@ public class MiniMonsterController : MonsterController {
                 target = player.transform.position;
             }
         }
-        Debug.Log(minDist);
     }
 
     private bool isInChaseCircle(Vector3 position)
