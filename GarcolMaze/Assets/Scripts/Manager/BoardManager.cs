@@ -8,7 +8,7 @@ public class BoardManager : MonoBehaviour
     private List<Vector3> availableCells;
     [SerializeField]
     private Tilemap tileMap;
-    private List<GameObject> listCurrentItems;
+    public List<GameObject> listCurrentItems;
 
     private void ConstructAvailableLocationOfTiles()
 	{

@@ -65,6 +65,10 @@ public class MiniMonsterController : MonsterController {
         // choose nearest player
         foreach (GameObject player in players)
         {
+            // ignore dead player
+            if (!player)
+                continue;
+
             // ignore player outside chase circle
             if (!isInChaseCircle(player.transform.position))
                 continue;      
@@ -139,7 +143,7 @@ public class MiniMonsterController : MonsterController {
         }
     }
 
-    protected override void InteractWhenHitPlayer(PlayerController player)
+    public override void InteractWhenHitPlayer(PlayerController player)
     {
         if (player == null) return;
 
@@ -150,7 +154,6 @@ public class MiniMonsterController : MonsterController {
         }
         else
         {
-            // TODO: add dead animation
             // play ice broke effect
             freeze_effect.GetComponent<Animator>().SetTrigger("IsBroke");
             // continue animation

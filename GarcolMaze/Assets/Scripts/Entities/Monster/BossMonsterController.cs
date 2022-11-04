@@ -5,20 +5,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BossMonsterController : MonsterController {
-    private GameObject[] players;
+public class BossMonsterController : MonsterController
+{
+    private List<GameObject> itemObjects;
     NavMeshAgent agent;
     Vector3 target;
 
-    float direction = 1;
+    private int currentItemId;
 
     Animator animator;
     public GameObject freezeAnimationPrefab;
     GameObject freeze_effect;
+    public GameObject fireTraitPrefab;
+    public float fireDropCycleTime = 1f;
 
     public float speed = 1;
-    public float chaseRadius = 3;
-    public Vector3 startPosition;
+    public float distEpsilon = 0.2f;
 
     private void Start()
     {
@@ -30,56 +32,46 @@ public class BossMonsterController : MonsterController {
         agent.autoBraking = true;
         agent.speed = speed;
 
-        startPosition = transform.position;
-        target = startPosition;
-        players = GameObject.FindGameObjectsWithTag("Player");
+        target = transform.position;
+        itemObjects = GameManager.instance.boardManager.listCurrentItems;
+        currentItemId = -1;
+
+        // start drop fire trait
+        StartCoroutine(leaveFireTrait());
     }
 
     private void Update()
     {
+        
         SetTargetPosition();
         SetAgentPosition();
     }
 
-    private void SetTargetPosition()
+    
+    IEnumerator leaveFireTrait()
     {
-        // default target is start position
-        // target = startPosition;
-
-        float minDist = float.MaxValue;
-
-        // choose nearest player
-        foreach (GameObject player in players)
+        while (this)
         {
-
-            float dist = calcDist(player.transform.position);
-
-            if (dist < minDist)
-            {
-                minDist = dist;
-                target = player.transform.position;
-            }
+            Vector2 dropPosition = transform.position;
+            // freeze for freezeTime seconds
+            yield return new WaitForSeconds(fireDropCycleTime);
+            Instantiate(fireTraitPrefab, dropPosition, Quaternion.identity);
         }
+        yield return null;
     }
 
-    // calculate distance from monster to player,
-    // if cannot find path then return max_path + 1
-    private float calcDist(Vector3 position)
+    private void SetTargetPosition()
     {
-        NavMeshPath path = new NavMeshPath();
-
-        if (agent.CalculatePath(position, path))
+        // go to all
+        if (Vector2.Distance(target, transform.position) <= distEpsilon)
         {
-            float distance = Vector2.Distance(transform.position, path.corners[0]);
-
-            for (int j = 1; j < path.corners.Length; j++)
+            currentItemId = (currentItemId + 1) % itemObjects.Count;
+            target = itemObjects[currentItemId].transform.position;
+            while (!itemObjects[currentItemId])
             {
-                distance += Vector2.Distance(path.corners[j - 1], path.corners[j]);
+                currentItemId = (currentItemId + 1) % itemObjects.Count;
             }
-
-            return distance;
         }
-        return float.MaxValue;
     }
 
 
@@ -97,7 +89,8 @@ public class BossMonsterController : MonsterController {
         // set isFreezed to true
         isFreezed = true;
         // add particle animation for freeze
-        freeze_effect = Instantiate(freezeAnimationPrefab, transform.position, Quaternion.identity, transform);
+        freeze_effect = Instantiate(freezeAnimationPrefab, transform.position + 0.5f*transform.up, Quaternion.identity, transform);
+        freeze_effect.transform.localScale *= 2.0f;
 
         StartCoroutine(freezing());
         IEnumerator freezing()
@@ -116,24 +109,15 @@ public class BossMonsterController : MonsterController {
         }
     }
 
-    protected override void InteractWhenHitPlayer(PlayerController player)
+    public override void InteractWhenHitPlayer(PlayerController player)
     {
         if (player == null) return;
-
-
         if (!isFreezed)
         {
             player.Damage(damagePoint);
         }
         else
         {
-            // TODO: add dead animation
-            // play ice broke effect
-            freeze_effect.GetComponent<Animator>().SetTrigger("IsBroke");
-            // continue animation
-            animator.speed = 1;
-            // play dead animation, on exit it will destroy our monster
-            animator.SetTrigger("IsHitted");
         }
     }
 }
