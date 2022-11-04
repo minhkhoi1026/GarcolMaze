@@ -15,6 +15,8 @@ public class BossMonsterController : MonsterController {
     Animator animator;
     public GameObject freezeAnimationPrefab;
     GameObject freeze_effect;
+    public GameObject fireTraitPrefab;
+    public float fireDropCycleTime = 1f;
 
     public float speed = 1;
     public float chaseRadius = 3;
@@ -33,12 +35,29 @@ public class BossMonsterController : MonsterController {
         startPosition = transform.position;
         target = startPosition;
         players = GameObject.FindGameObjectsWithTag("Player");
+
+        // start drop fire trait
+        StartCoroutine(leaveFireTrait());
     }
 
     private void Update()
     {
+        
         SetTargetPosition();
         SetAgentPosition();
+    }
+
+    
+    IEnumerator leaveFireTrait()
+    {
+        while (this)
+        {
+            Vector2 dropPosition = transform.position;
+            // freeze for freezeTime seconds
+            yield return new WaitForSeconds(fireDropCycleTime);
+            Instantiate(fireTraitPrefab, dropPosition, Quaternion.identity);
+        }
+        yield return null;
     }
 
     private void SetTargetPosition()
