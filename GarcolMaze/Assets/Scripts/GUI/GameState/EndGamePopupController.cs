@@ -53,4 +53,9 @@ public class EndGamePopupController : MonoBehaviour
             SceneManager.LoadScene("Level_" + level.ToString());
         }
     }
+
+    public void restart()
+    {
+        SceneManager.LoadScene("Level_" + level.ToString());
+    }
 }
