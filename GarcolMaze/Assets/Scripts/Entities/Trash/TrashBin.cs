@@ -35,6 +35,5 @@ public class TrashBin : Interactable
 	public override void Interact(PlayerController player)
 	{
 		player.TakeOutTrash(trashType);
-		SoundManager.PlaySound("throwTrash");
 	}
 }

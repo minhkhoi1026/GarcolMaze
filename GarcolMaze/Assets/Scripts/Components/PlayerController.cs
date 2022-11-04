@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
         
         trashCountTotal[(int)trashType] += cnt;
         trashCountCurrent[(int)trashType] = 0;
+        SoundManager.PlaySound("throwTrash");
 
         GameManager.instance.removeTrash(cnt);
         if (collectableStats != null)
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
             int organicCnt = trashCountTotal[(int)TrashType.Organic];
             collectableStats.UpdateStats(recycleableCnt, nonRecycleableCnt, organicCnt);
         }
+
     }
 
     protected void collectItems(Vector2 position, float pickupRange)

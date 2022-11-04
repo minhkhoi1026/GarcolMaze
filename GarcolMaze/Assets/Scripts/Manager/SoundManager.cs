@@ -10,6 +10,10 @@ public class SoundManager : MonoBehaviour
 	private void Start()
 	{
 		sounds = new Dictionary<string, AudioClip>();
+		
+		sounds["gameStart"] = Resources.Load<AudioClip>("Audio/Sounds/gameStart");
+
+
 		sounds["collectItem"] = Resources.Load<AudioClip>("Audio/Sounds/collectItem");
 		sounds["collectTrash"] = Resources.Load<AudioClip>("Audio/Sounds/collectTrash");
 		sounds["speedItem"] = Resources.Load<AudioClip>("Audio/Sounds/speedItem");
@@ -23,6 +27,8 @@ public class SoundManager : MonoBehaviour
 		sounds["throwTrash"] = Resources.Load<AudioClip>("Audio/Sounds/throwTrash");
 		sounds["switch"] = Resources.Load<AudioClip>("Audio/Sounds/switch");
 
+		sounds["win"] = Resources.Load<AudioClip>("Audio/Sounds/win");
+		sounds["lose"] = Resources.Load<AudioClip>("Audio/Sounds/lose");
 
 
 
@@ -31,7 +37,6 @@ public class SoundManager : MonoBehaviour
 
 	public static void PlaySound(string clip)
 	{
-		Debug.Log(clip);
 		if (sounds.ContainsKey(clip))
 			audioSource.PlayOneShot(sounds[clip]);
 	}
