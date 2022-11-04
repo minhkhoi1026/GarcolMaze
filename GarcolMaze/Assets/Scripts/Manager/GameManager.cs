@@ -1,17 +1,20 @@
 using System;
-using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEditor;
 
 public class GameManager : MonoBehaviour {
 	private static GameManager _instance = null;
 	public EnemyManager enemyManager = null;
 	public BoardManager boardManager = null;
+	public PlayerManager playerManager = null;
 
     public float miniMonsterSpawnTime = 0f;
     public int nInitialMonster = 10;
+	public int nInitialTrash = 10;
+	public int nInitialItem = 5;
+
+	private int remainingTrash;
 
     public static GameManager instance
 	{
@@ -36,7 +39,8 @@ public class GameManager : MonoBehaviour {
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
-
+		
+		playerManager = GetComponent<PlayerManager>();
 		enemyManager = GetComponent<EnemyManager>();
 		boardManager = GetComponent<BoardManager>();
 
@@ -55,9 +59,74 @@ public class GameManager : MonoBehaviour {
 		{
 			enemyManager.SpawnMonster(monsterPositionList[i], "MiniMonster");
 		}
+
+		spawnRandomTrash();
+		spawnRandomItem(nInitialItem);
 	}
 
+	private void spawnRandomTrash()
+	{
 
+		string[] trashDir = AssetDatabase.FindAssets("t:prefab", new string[] { "Assets/Prefabs/Trash" });
+		int n = nInitialTrash;
+		for (int i = 0; i < trashDir.Length; i++)
+		{
+			if (n <= 0) return;
+			int num = UnityEngine.Random.Range(0, n + 1);
+			if (i == trashDir.Length - 1) num = n;
+			n -= num;
+
+			string path = AssetDatabase.GUIDToAssetPath(trashDir[i]);
+			boardManager.GenerateItem(AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject , num, true);
+
+		}
+
+		remainingTrash = nInitialMonster;
+	}
+
+	public void spawnRandomItem(int num)
+	{
+		string[] itemDir = AssetDatabase.FindAssets("t:prefab", new string[] { "Assets/Prefabs/Item/GoodItem" });
+		for (int i = 0; i < num; ++i)
+		{
+			int idx = UnityEngine.Random.Range(0, itemDir.Length);
+			string path = AssetDatabase.GUIDToAssetPath(itemDir[idx]);
+			boardManager.GenerateItem(AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject, 1);
+		}
+	}
+
+	public void removeTrash(int cnt)
+	{
+		remainingTrash -= cnt;
+		if (remainingTrash <= 0)
+		{
+			winGameState();
+		}
+	}
+
+	public void removeCharacter(GameObject player)
+	{
+		if (playerManager.playerA == player)
+		{
+			playerManager.playerA = null;
+		} else
+		{
+			playerManager.playerB = null;
+		}
+		if (playerManager.playerA == null && playerManager.playerB == null)
+			gameOverState();
+		Destroy(player);
+	}
+
+	private void winGameState()
+	{
+		Debug.Log("win");
+	}
+
+	private void gameOverState()
+	{
+		
+	}
 
 	void Update() {
 		

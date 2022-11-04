@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1455257323297087710}
   - component: {fileID: 1455257323297087709}
   - component: {fileID: 1455257323297087708}
+  - component: {fileID: 1108480622}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,8 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   boardManager: {fileID: 0}
+  playerManager: {fileID: 0}
   miniMonsterSpawnTime: 0
-  nInitialMonster: 3
+  nInitialMonster: 30
 --- !u!114 &1455257323297087709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,3 +77,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList: []
+--- !u!114 &1108480622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455257323297087705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb72f4cd2e351048afa0af5c3988a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerA: {fileID: 0}
+  playerB: {fileID: 0}

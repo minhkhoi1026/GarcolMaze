@@ -713,7 +713,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10.499989
+  orthographic size: 10.4999895
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -737,7 +737,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168939848}
   m_LocalRotation: {x: 0.0003054776, y: -0.03297937, z: 0.000010079942, w: 0.999456}
-  m_LocalPosition: {x: -2.0110114, y: -1.4114319, z: -13.985711}
+  m_LocalPosition: {x: -2.0110114, y: -1.4114316, z: -13.985711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -892,6 +892,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodenDoorVer (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8477202965539086188, guid: 057bc8cab7ecbb444ae514f3b68eb412, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8477202965539086189, guid: 057bc8cab7ecbb444ae514f3b68eb412, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -979,6 +983,10 @@ PrefabInstance:
     - target: {fileID: 8477202965539086187, guid: 057bc8cab7ecbb444ae514f3b68eb412, type: 3}
       propertyPath: m_Name
       value: WoodenDoorVer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477202965539086188, guid: 057bc8cab7ecbb444ae514f3b68eb412, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8477202965539086189, guid: 057bc8cab7ecbb444ae514f3b68eb412, type: 3}
       propertyPath: m_RootOrder
@@ -1567,6 +1575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodenDoorHor (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 549416981080027044, guid: 92e9c8c4f71d6034fbd2187e3af0020b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 549416981080027045, guid: 92e9c8c4f71d6034fbd2187e3af0020b, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -2035,6 +2047,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8519ae2bee4402d4e943b867a0623a4c, type: 3}
+--- !u!1 &1024574510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2360577443296890838, guid: 8519ae2bee4402d4e943b867a0623a4c, type: 3}
+  m_PrefabInstance: {fileID: 1024574509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1028889889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2168,6 +2185,10 @@ PrefabInstance:
     - target: {fileID: 549416981080027043, guid: 92e9c8c4f71d6034fbd2187e3af0020b, type: 3}
       propertyPath: m_Name
       value: WoodenDoorHor (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 549416981080027044, guid: 92e9c8c4f71d6034fbd2187e3af0020b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 549416981080027045, guid: 92e9c8c4f71d6034fbd2187e3af0020b, type: 3}
       propertyPath: m_RootOrder
@@ -2315,6 +2336,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1108480622, guid: 631526b8c248b8948a3347f94483ca79, type: 3}
+      propertyPath: playerA
+      value: 
+      objectReference: {fileID: 1024574510}
+    - target: {fileID: 1108480622, guid: 631526b8c248b8948a3347f94483ca79, type: 3}
+      propertyPath: playerB
+      value: 
+      objectReference: {fileID: 1631384454}
     - target: {fileID: 1455257323297087705, guid: 631526b8c248b8948a3347f94483ca79, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -2784,7 +2813,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371758822}
   m_LocalRotation: {x: 0.0003054776, y: -0.03297937, z: 0.000010079942, w: 0.999456}
-  m_LocalPosition: {x: -2.0110114, y: -1.4114319, z: -13.985711}
+  m_LocalPosition: {x: -2.0110114, y: -1.4114316, z: -13.985711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1969063564}
@@ -13091,6 +13120,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodenDoorVer
       objectReference: {fileID: 0}
+    - target: {fileID: 8477202965539086188, guid: 057bc8cab7ecbb444ae514f3b68eb412, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8477202965539086189, guid: 057bc8cab7ecbb444ae514f3b68eb412, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -13225,6 +13258,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2f28fa6c0d9d17409e4a1b9bde180b9, type: 3}
+--- !u!1 &1631384454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9085808103119365486, guid: c2f28fa6c0d9d17409e4a1b9bde180b9, type: 3}
+  m_PrefabInstance: {fileID: 1631384453}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1640171261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23045,6 +23083,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodenDoorHor
       objectReference: {fileID: 0}
+    - target: {fileID: 549416981080027044, guid: 92e9c8c4f71d6034fbd2187e3af0020b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 549416981080027045, guid: 92e9c8c4f71d6034fbd2187e3af0020b, type: 3}
       propertyPath: m_RootOrder
       value: 33
@@ -23612,6 +23654,10 @@ PrefabInstance:
     - target: {fileID: 549416981080027043, guid: 92e9c8c4f71d6034fbd2187e3af0020b, type: 3}
       propertyPath: m_Name
       value: WoodenDoorHor (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 549416981080027044, guid: 92e9c8c4f71d6034fbd2187e3af0020b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 549416981080027045, guid: 92e9c8c4f71d6034fbd2187e3af0020b, type: 3}
       propertyPath: m_RootOrder
@@ -30076,8 +30122,8 @@ Tilemap:
   - first: {x: -9, y: 6, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 11
-      m_TileSpriteIndex: 11
+      m_TileIndex: 17
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -31337,7 +31383,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 379
+  - m_RefCount: 378
     m_Data: {fileID: 11400000, guid: 30086b499cfaada478f5de7227360c4d, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -31349,7 +31395,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 41
+  - m_RefCount: 42
     m_Data: {fileID: 11400000, guid: 21fd34e13b01cd147a2b7ce3a3ce07b8, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -31386,11 +31432,11 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 379
+  - m_RefCount: 378
     m_Data: {fileID: 1612206129647790914, guid: ec59a1e9b7169fa4799e6cf8a6969ac1, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 41
+  - m_RefCount: 42
     m_Data: {fileID: -1031414003539726126, guid: ec59a1e9b7169fa4799e6cf8a6969ac1, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -31574,6 +31620,10 @@ PrefabInstance:
     - target: {fileID: 8477202965539086187, guid: 057bc8cab7ecbb444ae514f3b68eb412, type: 3}
       propertyPath: m_Name
       value: WoodenDoorVer (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477202965539086188, guid: 057bc8cab7ecbb444ae514f3b68eb412, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8477202965539086189, guid: 057bc8cab7ecbb444ae514f3b68eb412, type: 3}
       propertyPath: m_RootOrder
@@ -32669,6 +32719,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907350771}
     m_Modifications:
+    - target: {fileID: 5046455614028879884, guid: 0561ce10c633c2d46911cb91c318d62e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046455614028879884, guid: 0561ce10c633c2d46911cb91c318d62e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046455614028879884, guid: 0561ce10c633c2d46911cb91c318d62e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1907350775}
+    - target: {fileID: 5046455614028879884, guid: 0561ce10c633c2d46911cb91c318d62e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046455614028879884, guid: 0561ce10c633c2d46911cb91c318d62e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046455614028879884, guid: 0561ce10c633c2d46911cb91c318d62e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseUIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046455614028879884, guid: 0561ce10c633c2d46911cb91c318d62e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5046455614028879922, guid: 0561ce10c633c2d46911cb91c318d62e, type: 3}
       propertyPath: m_Name
       value: ButtonPause
