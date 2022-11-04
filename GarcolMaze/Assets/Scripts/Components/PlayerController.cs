@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 	private void Awake()
 	{
 		healthSystem = new HealthSystem(this);
-        healthSystem.InitHP(20);
+        healthSystem.InitHP(100);
         animator = GetComponent<Animator>();
 
     }
