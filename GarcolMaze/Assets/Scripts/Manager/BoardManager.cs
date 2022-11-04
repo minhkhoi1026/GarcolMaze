@@ -31,7 +31,7 @@ public class BoardManager : MonoBehaviour
 	}
 
     // TODO: pass array of number of enemies type
-    public void GenerateItem(GameObject item, int numberOfItem)
+    public void GenerateItem(GameObject item, int numberOfItem, bool isRotate = false)
 	{
         if (availableCells == null)
 		{
@@ -41,7 +41,10 @@ public class BoardManager : MonoBehaviour
 		{
             int randomIndex = Random.Range(0, availableCells.Count);
             Vector3 randomPosition = availableCells[randomIndex];
-            Instantiate(item, new Vector3(randomPosition.x + 0.5f, randomPosition.y + 0.5f, randomPosition.z), Quaternion.identity);
+            float biasX = Random.Range(0.3f, 0.7f);
+            float biasY = Random.Range(0.3f, 0.7f);
+            GameObject obj = Instantiate(item, new Vector3(randomPosition.x + biasX, randomPosition.y + biasY, randomPosition.z), Quaternion.identity);
+            if (isRotate) obj.transform.Rotate(0.0f, 0.0f, Random.Range(-30f, 30f));
         }
 	}
 
