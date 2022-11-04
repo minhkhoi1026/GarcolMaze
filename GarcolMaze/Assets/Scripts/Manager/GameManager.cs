@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public float miniMonsterSpawnTime = 0f;
     public int nInitialMonster = 10;
 	public int nInitialTrash = 10;
+	public int nInitialItem = 5;
 
 	private int remainingTrash;
 
@@ -60,13 +61,13 @@ public class GameManager : MonoBehaviour {
 		}
 
 		spawnRandomTrash();
+		spawnRandomItem(nInitialItem);
 	}
 
 	private void spawnRandomTrash()
 	{
 
 		string[] trashDir = AssetDatabase.FindAssets("t:prefab", new string[] { "Assets/Prefabs/Trash" });
-		Debug.Log(trashDir.Length);
 		int n = nInitialTrash;
 		for (int i = 0; i < trashDir.Length; i++)
 		{
@@ -76,11 +77,22 @@ public class GameManager : MonoBehaviour {
 			n -= num;
 
 			string path = AssetDatabase.GUIDToAssetPath(trashDir[i]);
-			boardManager.GenerateItem(AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject , num);
+			boardManager.GenerateItem(AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject , num, true);
 
 		}
 
 		remainingTrash = nInitialMonster;
+	}
+
+	public void spawnRandomItem(int num)
+	{
+		string[] itemDir = AssetDatabase.FindAssets("t:prefab", new string[] { "Assets/Prefabs/Item/GoodItem" });
+		for (int i = 0; i < num; ++i)
+		{
+			int idx = UnityEngine.Random.Range(0, itemDir.Length);
+			string path = AssetDatabase.GUIDToAssetPath(itemDir[idx]);
+			boardManager.GenerateItem(AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject, 1);
+		}
 	}
 
 	public void removeTrash(int cnt)
