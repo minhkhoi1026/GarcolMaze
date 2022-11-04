@@ -62,8 +62,8 @@ public class BossMonsterController : MonsterController
 
     private void SetTargetPosition()
     {
-        // go to all
-        if (Vector2.Distance(target, transform.position) <= distEpsilon)
+        // go to all item
+        if (Vector2.Distance(target, transform.position) <= distEpsilon || currentItemId == -1)
         {
             currentItemId = (currentItemId + 1) % itemObjects.Count;
             target = itemObjects[currentItemId].transform.position;
@@ -72,6 +72,7 @@ public class BossMonsterController : MonsterController
                 currentItemId = (currentItemId + 1) % itemObjects.Count;
             }
         }
+        Debug.Log(currentItemId);
     }
 
 
