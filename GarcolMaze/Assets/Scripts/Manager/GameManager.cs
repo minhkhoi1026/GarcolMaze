@@ -108,12 +108,12 @@ public class GameManager : MonoBehaviour {
 
 	private void winGameState()
 	{
-
+		Debug.Log("win");
 	}
 
 	private void gameOverState()
 	{
-
+		
 	}
 
 	void Update() {

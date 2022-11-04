@@ -41,7 +41,9 @@ public class BoardManager : MonoBehaviour
 		{
             int randomIndex = Random.Range(0, availableCells.Count);
             Vector3 randomPosition = availableCells[randomIndex];
-            Instantiate(item, new Vector3(randomPosition.x + 0.5f, randomPosition.y + 0.5f, randomPosition.z), Quaternion.identity);
+            float biasX = Random.Range(0.3f, 0.7f);
+            float biasY = Random.Range(0.3f, 0.7f);
+            Instantiate(item, new Vector3(randomPosition.x + biasX, randomPosition.y + biasY, randomPosition.z), Quaternion.identity);
         }
 	}
 
