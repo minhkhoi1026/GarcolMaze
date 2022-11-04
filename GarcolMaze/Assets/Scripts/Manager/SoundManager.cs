@@ -10,9 +10,6 @@ public class SoundManager : MonoBehaviour
 	private void Start()
 	{
 		sounds = new Dictionary<string, AudioClip>();
-		
-		sounds["gameStart"] = Resources.Load<AudioClip>("Audio/Sounds/gameStart");
-
 
 		sounds["collectItem"] = Resources.Load<AudioClip>("Audio/Sounds/collectItem");
 		sounds["collectTrash"] = Resources.Load<AudioClip>("Audio/Sounds/collectTrash");

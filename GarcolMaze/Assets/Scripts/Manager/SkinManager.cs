@@ -9,6 +9,7 @@ public class SkinManager : MonoBehaviour
     // Start is called before the first frame update
     public char PLAYER_NAME;
     private Image sprite;
+    public Image player;
     public List<Sprite> skins = new List<Sprite>();
     private int selectedSkin = 0;
 
@@ -34,8 +35,16 @@ public class SkinManager : MonoBehaviour
 
     public void SaveSkin()
 	{
-        Debug.Log("Skin" + PLAYER_NAME);
-        Debug.Log(selectedSkin);
+        GameObject obj;
+        if (PLAYER_NAME == 'A')
+		{
+            obj = Resources.Load("Player/Male/PlayerA_" + selectedSkin) as GameObject;
+        } else
+		{
+            obj = Resources.Load("Player/Female/PlayerB_" + selectedSkin) as GameObject;
+        }
+        player.sprite = obj.GetComponent<SpriteRenderer>().sprite;
+      
         PlayerPrefs.SetInt("Skin" + PLAYER_NAME, selectedSkin);
-	}
+    }
 }

@@ -46,5 +46,5 @@ public class StartMenuController : MonoBehaviour
     public void ConfirmSkin()
 	{
         chooseSkinUI.SetActive(false);
-	}
+    }
 }
