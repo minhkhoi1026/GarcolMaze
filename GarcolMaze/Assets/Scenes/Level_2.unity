@@ -713,7 +713,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10.4999895
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -737,7 +737,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168939848}
   m_LocalRotation: {x: 0.0003054776, y: -0.03297937, z: 0.000010079942, w: 0.999456}
-  m_LocalPosition: {x: -2.0110114, y: -1.4114316, z: -13.985711}
+  m_LocalPosition: {x: -2.275771, y: -1.4138875, z: -9.978246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2813,7 +2813,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371758822}
   m_LocalRotation: {x: 0.0003054776, y: -0.03297937, z: 0.000010079942, w: 0.999456}
-  m_LocalPosition: {x: -2.0110114, y: -1.4114316, z: -13.985711}
+  m_LocalPosition: {x: -2.275771, y: -1.4138875, z: -9.978246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1969063564}
@@ -13277,7 +13277,7 @@ PrefabInstance:
     - target: {fileID: 1246660440918559892, guid: 74bd43f515d55114fad2d474d60656ea, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 4c6335bd799da41488813ee362e7491f, type: 2}
+      objectReference: {fileID: 23800000, guid: cb4fd9fa43c7c614ab26b662757c725d, type: 2}
     - target: {fileID: 1246660440918559893, guid: 74bd43f515d55114fad2d474d60656ea, type: 3}
       propertyPath: m_RootOrder
       value: 37
@@ -23881,7 +23881,7 @@ GameObject:
   - component: {fileID: 2070968647}
   - component: {fileID: 2070968646}
   - component: {fileID: 2070968648}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: map_1_maze
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -51,6 +51,9 @@ public class BossMonsterController : MonsterController {
         // choose nearest player
         foreach (GameObject player in players)
         {
+            // ignore dead player
+            if (!player)
+                continue;
 
             float dist = calcDist(player.transform.position);
 
@@ -119,21 +122,12 @@ public class BossMonsterController : MonsterController {
     protected override void InteractWhenHitPlayer(PlayerController player)
     {
         if (player == null) return;
-
-
         if (!isFreezed)
         {
             player.Damage(damagePoint);
         }
         else
         {
-            // TODO: add dead animation
-            // play ice broke effect
-            freeze_effect.GetComponent<Animator>().SetTrigger("IsBroke");
-            // continue animation
-            animator.speed = 1;
-            // play dead animation, on exit it will destroy our monster
-            animator.SetTrigger("IsHitted");
         }
     }
 }

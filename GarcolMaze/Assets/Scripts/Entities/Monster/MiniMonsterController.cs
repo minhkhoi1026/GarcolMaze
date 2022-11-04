@@ -65,6 +65,10 @@ public class MiniMonsterController : MonsterController {
         // choose nearest player
         foreach (GameObject player in players)
         {
+            // ignore dead player
+            if (!player)
+                continue;
+
             // ignore player outside chase circle
             if (!isInChaseCircle(player.transform.position))
                 continue;      
