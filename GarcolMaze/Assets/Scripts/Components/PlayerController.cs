@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 	private void Awake()
 	{
 		healthSystem = new HealthSystem(this);
-        healthSystem.InitHP(100);
+        healthSystem.InitHP(20);
         animator = GetComponent<Animator>();
 
     }
@@ -32,11 +32,14 @@ public class PlayerController : MonoBehaviour
 
     public void TakeOutTrash(TrashType trashType)
     {
-        if (trashCountCurrent[(int)trashType] == 0)
+        int cnt = trashCountCurrent[(int)trashType];
+        if (cnt == 0)
             return;
-        trashCountTotal[(int)trashType] += trashCountCurrent[(int)trashType];
+        
+        trashCountTotal[(int)trashType] += cnt;
         trashCountCurrent[(int)trashType] = 0;
 
+        GameManager.instance.removeTrash(cnt);
         if (collectableStats != null)
         {
             int recycleableCnt = trashCountTotal[(int)TrashType.Recyclable];
@@ -95,6 +98,6 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
 	{
-        Destroy(gameObject);
+        GameManager.instance.removeCharacter(gameObject);
 	}
 }
