@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	public EnemyManager enemyManager = null;
 	public BoardManager boardManager = null;
 	public PlayerManager playerManager = null;
+	public EndGamePopupController popupController = null;
 
     public float miniMonsterSpawnTime = 0f;
     public int nInitialMonster = 10;
@@ -120,12 +121,12 @@ public class GameManager : MonoBehaviour {
 
 	private void winGameState()
 	{
-		Debug.Log("win");
+		popupController.ShowPopup(true);
 	}
 
 	private void gameOverState()
 	{
-		
+		popupController.ShowPopup(false);
 	}
 
 	void Update() {
