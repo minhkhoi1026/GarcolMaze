@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burningDamage: 1
-  burningTime: 5
+  burningTime: 10
 --- !u!61 &-3019903688112382790
 BoxCollider2D:
   m_ObjectHideFlags: 0
