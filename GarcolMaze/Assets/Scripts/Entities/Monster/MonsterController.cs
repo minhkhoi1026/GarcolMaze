@@ -20,16 +20,5 @@ public abstract class MonsterController : MonoBehaviour {
 
 	public abstract void Freeze(float freezeTime);
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag.StartsWith("Player"))
-        {
-            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-
-            InteractWhenHitPlayer(player);
-        }
-    }
-
-    protected abstract void InteractWhenHitPlayer(PlayerController player);
+    public abstract void InteractWhenHitPlayer(PlayerController player);
 }

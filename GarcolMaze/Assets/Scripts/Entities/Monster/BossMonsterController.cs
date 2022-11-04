@@ -138,7 +138,7 @@ public class BossMonsterController : MonsterController {
         }
     }
 
-    protected override void InteractWhenHitPlayer(PlayerController player)
+    public override void InteractWhenHitPlayer(PlayerController player)
     {
         if (player == null) return;
         if (!isFreezed)

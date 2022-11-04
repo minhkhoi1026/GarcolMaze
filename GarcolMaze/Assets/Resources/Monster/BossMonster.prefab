@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2085117341}
   - component: {fileID: 2085117342}
   - component: {fileID: 3979131786220385413}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: BossMonsterCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,11 +63,11 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05438423, y: 0.5948217}
-  m_Size: {x: 0.75832367, y: 1.26512}
+  m_Offset: {x: -0.05438423, y: 0.3922782}
+  m_Size: {x: 0.75832367, y: 0.86003304}
   m_Direction: 0
 --- !u!1 &4619063070243379926
 GameObject:
@@ -80,11 +80,11 @@ GameObject:
   - component: {fileID: 4619063070243379932}
   - component: {fileID: 4619063070243379933}
   - component: {fileID: 4619063070243379930}
-  - component: {fileID: 4619063070243379931}
   - component: {fileID: 4619063070243379928}
   - component: {fileID: 4619063070243379929}
   - component: {fileID: 4619063070243379935}
-  m_Layer: 0
+  - component: {fileID: 2595749444766538651}
+  m_Layer: 9
   m_Name: BossMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4619063070243379926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.56, y: -5.55, z: 0}
+  m_LocalPosition: {x: 20.627, y: -5.547, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2085117341}
@@ -176,22 +176,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!70 &4619063070243379931
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4619063070243379926}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.05094433, y: 0.52775407}
-  m_Size: {x: 0.8837452, y: 1.3035636}
-  m_Direction: 0
 --- !u!50 &4619063070243379928
 Rigidbody2D:
   serializedVersion: 4
@@ -254,3 +238,29 @@ NavMeshAgent:
   m_BaseOffset: 2.0965588
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!61 &2595749444766538651
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619063070243379926}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.035740852, y: 0.09146881}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.49999994, y: 0.14716248}
+    oldSize: {x: 1.65625, y: 1.84375}
+    newSize: {x: 0.828125, y: 0.921875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.23686409, y: 0.11291504}
+  m_EdgeRadius: 0

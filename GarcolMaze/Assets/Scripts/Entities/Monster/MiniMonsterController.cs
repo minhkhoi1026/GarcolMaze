@@ -81,6 +81,7 @@ public class MiniMonsterController : MonsterController {
                 target = player.transform.position;
             }
         }
+        Debug.Log(minDist);
     }
 
     private bool isInChaseCircle(Vector3 position)
@@ -142,7 +143,7 @@ public class MiniMonsterController : MonsterController {
         }
     }
 
-    protected override void InteractWhenHitPlayer(PlayerController player)
+    public override void InteractWhenHitPlayer(PlayerController player)
     {
         if (player == null) return;
 
@@ -153,7 +154,6 @@ public class MiniMonsterController : MonsterController {
         }
         else
         {
-            // TODO: add dead animation
             // play ice broke effect
             freeze_effect.GetComponent<Animator>().SetTrigger("IsBroke");
             // continue animation
