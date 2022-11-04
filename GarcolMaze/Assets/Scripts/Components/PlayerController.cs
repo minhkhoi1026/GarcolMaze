@@ -20,10 +20,23 @@ public class PlayerController : MonoBehaviour
 	private void Awake()
 	{
 		healthSystem = new HealthSystem(this);
-        healthSystem.InitHP(100);
         animator = GetComponent<Animator>();
-
+        InitPlayerState();
     }
+
+    public void InitPlayerState()
+	{
+        healthSystem.InitHP(100);
+        for (int i = 0; i < 3; ++i)
+		{
+            trashCountCurrent[i] = trashCountTotal[i] = 0;
+		}
+        if (collectableStats != null)
+		{
+            collectableStats.UpdateStats(0, 0, 0);
+		}
+        moveSpeed = 3f;
+	}
 
     public void CollectTrashItem(TrashType trashType)
     {

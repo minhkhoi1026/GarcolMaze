@@ -46,7 +46,10 @@ public class PauseUIController : MonoBehaviour
 
     public void ResetLevel()
     {
-
+        Time.timeScale = 1f;
+        GameManager.instance.resetGame();
+        menuUI.SetActive(false);
+        isGamePause = false;
     }
 
     public void LoadSetting()
