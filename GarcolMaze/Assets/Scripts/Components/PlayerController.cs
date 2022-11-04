@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
 
     public void Damage(int point, string animationType = "Hit")
 	{
+        SoundManager.PlaySound("damaged");
         animator.SetTrigger(animationType);
         TextShow.showTextAbove(gameObject, textGUI, "-" + point);
         healthSystem.ChangeHP(-point);
@@ -111,6 +112,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
 	{
+        SoundManager.PlaySound("die");
         GameManager.instance.removeCharacter(gameObject);
 	}
 }

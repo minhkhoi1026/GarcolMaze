@@ -23,6 +23,7 @@ public class DoorSwitch : Interactable
     public override void Interact(PlayerController player)
     {
         ToggleAllDoors();
+        SoundManager.PlaySound("switch");
     }
 
     // Start is called before the first frame update

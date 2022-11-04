@@ -155,6 +155,7 @@ public class MiniMonsterController : MonsterController {
             // continue animation
             animator.speed = 1;
             // play dead animation, on exit it will destroy our monster
+            SoundManager.PlaySound("hitMonster");
             animator.SetTrigger("IsHitted");
         }
     }

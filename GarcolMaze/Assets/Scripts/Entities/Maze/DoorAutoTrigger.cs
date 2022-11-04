@@ -47,15 +47,18 @@ public class DoorAutoTrigger : AutoTrigger
         isBtnUp = true;
     }
 
-    public override void applyEffect(Collider2D other) { }
+    public override void applyEffect(Collider2D other) {
+    }
 
     public override void revertEffect(Collider2D other)
     {
         string colliderTag = other.gameObject.tag;
+        if (!colliderTag.StartsWith("Player")) return;
         if (canTriggerTag.Equals(colliderTag) || canTriggerTag.Equals("ANY_TAG"))
         {
             ToggleAllDoors();
             ToggleSprite();
+            SoundManager.PlaySound("button");
         }
     }
 }

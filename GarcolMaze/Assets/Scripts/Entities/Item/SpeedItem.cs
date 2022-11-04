@@ -9,7 +9,7 @@ public class SpeedItem : Collectable
 	public override void Collect(PlayerController player)
 	{
 		player.boostSpeed(SPEED_INCREASED, BOOSTED_TIME);
-		PlaySound("collectItem");
+		PlaySound("speedItem");
 
 	}
 
