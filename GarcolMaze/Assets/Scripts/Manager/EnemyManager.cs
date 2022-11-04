@@ -41,4 +41,12 @@ public class EnemyManager : MonoBehaviour {
 	{
 		return monsterPrefabDict.Keys.ToArray();
 	}
+
+	public void resetEnemy()
+	{
+		for (int i = 0; i < enemyList.Count; i++)
+			if (enemyList[i] != null)
+				Destroy(enemyList[i]);
+		enemyList.Clear();
+	}
 }

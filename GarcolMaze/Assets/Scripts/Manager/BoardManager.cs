@@ -8,10 +8,12 @@ public class BoardManager : MonoBehaviour
     private List<Vector3> availableCells;
     [SerializeField]
     private Tilemap tileMap;
+    private List<GameObject> listCurrentItems;
 
     private void ConstructAvailableLocationOfTiles()
 	{
         availableCells = new List<Vector3>();
+        listCurrentItems = new List<GameObject>();
         for (int i = tileMap.cellBounds.xMin + 2; i < tileMap.cellBounds.xMax - 1; i++)
 		{
             for (int j = tileMap.cellBounds.yMin + 2; j < tileMap.cellBounds.yMax - 1; j++)
@@ -27,7 +29,6 @@ public class BoardManager : MonoBehaviour
                 }
             }
 		}
-        
 	}
 
     // TODO: pass array of number of enemies type
@@ -45,6 +46,7 @@ public class BoardManager : MonoBehaviour
             float biasY = Random.Range(0.3f, 0.7f);
             GameObject obj = Instantiate(item, new Vector3(randomPosition.x + biasX, randomPosition.y + biasY, randomPosition.z), Quaternion.identity);
             if (isRotate) obj.transform.Rotate(0.0f, 0.0f, Random.Range(-30f, 30f));
+            listCurrentItems.Add(obj);
         }
 	}
 
@@ -90,4 +92,16 @@ public class BoardManager : MonoBehaviour
 
         return result;
     }
+
+
+    public void resetItem()
+	{
+        for (int i = 0; i < listCurrentItems.Count; ++i)
+		{
+            if (listCurrentItems[i] != null)
+			{
+                Destroy(listCurrentItems[i]);
+			}
+		}
+	}
 }

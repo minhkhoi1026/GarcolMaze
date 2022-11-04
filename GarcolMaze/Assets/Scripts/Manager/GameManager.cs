@@ -60,15 +60,14 @@ public class GameManager : MonoBehaviour {
 			enemyManager.SpawnMonster(monsterPositionList[i], "MiniMonster");
 		}
 
-		spawnRandomTrash();
+		spawnRandomTrash(nInitialTrash);
 		spawnRandomItem(nInitialItem);
 	}
 
-	private void spawnRandomTrash()
+	private void spawnRandomTrash(int n)
 	{
 
 		string[] trashDir = AssetDatabase.FindAssets("t:prefab", new string[] { "Assets/Prefabs/Trash" });
-		int n = nInitialTrash;
 		for (int i = 0; i < trashDir.Length; i++)
 		{
 			if (n <= 0) return;
@@ -120,7 +119,7 @@ public class GameManager : MonoBehaviour {
 
 	private void winGameState()
 	{
-		Debug.Log("win");
+
 	}
 
 	private void gameOverState()
@@ -128,7 +127,11 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
-	void Update() {
-		
+	public void resetGame()
+	{
+		playerManager.resetPlayerState();
+		enemyManager.resetEnemy();
+		boardManager.resetItem();
+		InitGame();
 	}
 }
