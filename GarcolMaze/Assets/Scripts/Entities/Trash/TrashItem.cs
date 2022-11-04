@@ -13,6 +13,7 @@ public class TrashItem : Collectable
 	public override void Collect(PlayerController player)
 	{
 		player.CollectTrashItem(trashType);
+		PlaySound("collectTrash");
 	}
 
 	public override void Use()

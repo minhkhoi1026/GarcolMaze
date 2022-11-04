@@ -8,6 +8,7 @@ public class FreezeItem : Collectable
 	public override void Collect(PlayerController player)
 	{
 		GameManager.instance.enemyManager.FreezeAllMiniMonster(freezeTime);
+		PlaySound("freezeItem");
 	}
 
 	public override void Use()

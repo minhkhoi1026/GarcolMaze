@@ -120,12 +120,13 @@ public class GameManager : MonoBehaviour {
 
 	private void winGameState()
 	{
-
+		SoundManager.PlaySound("win");
 		popupController.ShowPopup(true);
 	}
 
 	private void gameOverState()
 	{
+		SoundManager.PlaySound("lose");
 		popupController.ShowPopup(false);
 	}
 
