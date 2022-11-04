@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BossMonsterController : MonsterController {
-    private GameObject[] players;
+public class BossMonsterController : MonsterController
+{
+    private List<GameObject> itemObjects;
     NavMeshAgent agent;
     Vector3 target;
 
-    float direction = 1;
+    private int currentItemId;
 
     Animator animator;
     public GameObject freezeAnimationPrefab;
@@ -19,8 +20,7 @@ public class BossMonsterController : MonsterController {
     public float fireDropCycleTime = 1f;
 
     public float speed = 1;
-    public float chaseRadius = 3;
-    public Vector3 startPosition;
+    public float distEpsilon = 0.2f;
 
     private void Start()
     {
@@ -32,9 +32,9 @@ public class BossMonsterController : MonsterController {
         agent.autoBraking = true;
         agent.speed = speed;
 
-        startPosition = transform.position;
-        target = startPosition;
-        players = GameObject.FindGameObjectsWithTag("Player");
+        target = transform.position;
+        itemObjects = GameManager.instance.boardManager.listCurrentItems;
+        currentItemId = -1;
 
         // start drop fire trait
         StartCoroutine(leaveFireTrait());
@@ -62,46 +62,16 @@ public class BossMonsterController : MonsterController {
 
     private void SetTargetPosition()
     {
-        // default target is start position
-        // target = startPosition;
-
-        float maxDist = float.MinValue;
-
-        // choose nearest player
-        foreach (GameObject item in players)
+        // go to all
+        if (Vector2.Distance(target, transform.position) <= distEpsilon)
         {
-            // ignore dead player
-            if (!item)
-                continue;
-
-            float dist = calcDist(item.transform.position);
-
-            if (dist < maxDist)
+            currentItemId = (currentItemId + 1) % itemObjects.Count;
+            target = itemObjects[currentItemId].transform.position;
+            while (!itemObjects[currentItemId])
             {
-                maxDist = dist;
-                target = item.transform.position;
+                currentItemId = (currentItemId + 1) % itemObjects.Count;
             }
         }
-    }
-
-    // calculate distance from monster to player,
-    // if cannot find path then return max_path + 1
-    private float calcDist(Vector3 position)
-    {
-        NavMeshPath path = new NavMeshPath();
-
-        if (agent.CalculatePath(position, path))
-        {
-            float distance = Vector2.Distance(transform.position, path.corners[0]);
-
-            for (int j = 1; j < path.corners.Length; j++)
-            {
-                distance += Vector2.Distance(path.corners[j - 1], path.corners[j]);
-            }
-
-            return distance;
-        }
-        return float.MaxValue;
     }
 
 
