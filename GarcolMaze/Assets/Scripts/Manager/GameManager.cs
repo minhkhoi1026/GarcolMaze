@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
     public int nInitialMonster = 10;
 	public int nInitialTrash = 10;
 
+	private int remainingTrash;
+
     public static GameManager instance
 	{
 		get
@@ -77,6 +79,41 @@ public class GameManager : MonoBehaviour {
 			boardManager.GenerateItem(AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject , num);
 
 		}
+
+		remainingTrash = nInitialMonster;
+	}
+
+	public void removeTrash(int cnt)
+	{
+		remainingTrash -= cnt;
+		if (remainingTrash <= 0)
+		{
+			winGameState();
+		}
+	}
+
+	public void removeCharacter(GameObject player)
+	{
+		if (playerManager.playerA == player)
+		{
+			playerManager.playerA = null;
+		} else
+		{
+			playerManager.playerB = null;
+		}
+		if (playerManager.playerA == null && playerManager.playerB == null)
+			gameOverState();
+		Destroy(player);
+	}
+
+	private void winGameState()
+	{
+
+	}
+
+	private void gameOverState()
+	{
+
 	}
 
 	void Update() {
