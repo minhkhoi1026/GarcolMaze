@@ -65,21 +65,21 @@ public class BossMonsterController : MonsterController {
         // default target is start position
         // target = startPosition;
 
-        float minDist = float.MaxValue;
+        float maxDist = float.MinValue;
 
         // choose nearest player
-        foreach (GameObject player in players)
+        foreach (GameObject item in players)
         {
             // ignore dead player
-            if (!player)
+            if (!item)
                 continue;
 
-            float dist = calcDist(player.transform.position);
+            float dist = calcDist(item.transform.position);
 
-            if (dist < minDist)
+            if (dist < maxDist)
             {
-                minDist = dist;
-                target = player.transform.position;
+                maxDist = dist;
+                target = item.transform.position;
             }
         }
     }
