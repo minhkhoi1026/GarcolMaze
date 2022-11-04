@@ -1,9 +1,7 @@
 using System;
-using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEditor;
 
 public class GameManager : MonoBehaviour {
 	private static GameManager _instance = null;
@@ -13,6 +11,7 @@ public class GameManager : MonoBehaviour {
 
     public float miniMonsterSpawnTime = 0f;
     public int nInitialMonster = 10;
+	public int nInitialTrash = 10;
 
     public static GameManager instance
 	{
@@ -48,7 +47,6 @@ public class GameManager : MonoBehaviour {
 
 	private void InitGame()
 	{
-		Debug.Log(PlayerPrefs.GetInt("SkinA"));
 		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
 		List<Vector3> monsterPositionList = boardManager.GenerateRandomPosition(nInitialMonster, 
@@ -58,9 +56,28 @@ public class GameManager : MonoBehaviour {
 		{
 			enemyManager.SpawnMonster(monsterPositionList[i], "MiniMonster");
 		}
+
+		spawnRandomTrash();
 	}
 
+	private void spawnRandomTrash()
+	{
 
+		string[] trashDir = AssetDatabase.FindAssets("t:prefab", new string[] { "Assets/Prefabs/Trash" });
+		Debug.Log(trashDir.Length);
+		int n = nInitialTrash;
+		for (int i = 0; i < trashDir.Length; i++)
+		{
+			if (n <= 0) return;
+			int num = UnityEngine.Random.Range(0, n + 1);
+			if (i == trashDir.Length - 1) num = n;
+			n -= num;
+
+			string path = AssetDatabase.GUIDToAssetPath(trashDir[i]);
+			boardManager.GenerateItem(AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject , num);
+
+		}
+	}
 
 	void Update() {
 		
