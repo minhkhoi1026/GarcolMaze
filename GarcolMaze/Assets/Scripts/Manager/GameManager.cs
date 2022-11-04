@@ -56,7 +56,10 @@ public class GameManager : MonoBehaviour {
 		List<Vector3> monsterPositionList = boardManager.GenerateRandomPosition(nInitialMonster, 
 			new Vector3[] {players[0].transform.position, players[1].transform.position},
 			6f);
-		for (int i = 0; i < monsterPositionList.Count; i++)
+
+		enemyManager.SpawnMonster(monsterPositionList[0], "BossMonster");
+
+		for (int i = 1; i < monsterPositionList.Count; i++)
 		{
 			enemyManager.SpawnMonster(monsterPositionList[i], "MiniMonster");
 		}

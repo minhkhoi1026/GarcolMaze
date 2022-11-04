@@ -17,6 +17,8 @@ public class EnemyManager : MonoBehaviour {
         monsterPrefabDict = new Dictionary<string, GameObject>();
 		monsterPrefabDict.Add("MiniMonster", 
 			(GameObject)Resources.Load("Monster/Minimonster", typeof(GameObject)));
+        monsterPrefabDict.Add("BossMonster",
+            (GameObject)Resources.Load("Monster/Bossmonster", typeof(GameObject)));
 
     }
 
@@ -32,6 +34,9 @@ public class EnemyManager : MonoBehaviour {
 	{
 		foreach (GameObject monster in enemyList)
 		{
+			// ignore dead monster
+			if (!monster)
+				continue;
 			MonsterController controller = monster.GetComponent<MonsterController>();
 			controller.Freeze(freezeTime);
 		}

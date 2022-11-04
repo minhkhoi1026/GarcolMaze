@@ -15,6 +15,8 @@ public class BossMonsterController : MonsterController {
     Animator animator;
     public GameObject freezeAnimationPrefab;
     GameObject freeze_effect;
+    public GameObject fireTraitPrefab;
+    public float fireDropCycleTime = 1f;
 
     public float speed = 1;
     public float chaseRadius = 3;
@@ -33,12 +35,29 @@ public class BossMonsterController : MonsterController {
         startPosition = transform.position;
         target = startPosition;
         players = GameObject.FindGameObjectsWithTag("Player");
+
+        // start drop fire trait
+        StartCoroutine(leaveFireTrait());
     }
 
     private void Update()
     {
+        
         SetTargetPosition();
         SetAgentPosition();
+    }
+
+    
+    IEnumerator leaveFireTrait()
+    {
+        while (this)
+        {
+            Vector2 dropPosition = transform.position;
+            // freeze for freezeTime seconds
+            yield return new WaitForSeconds(fireDropCycleTime);
+            Instantiate(fireTraitPrefab, dropPosition, Quaternion.identity);
+        }
+        yield return null;
     }
 
     private void SetTargetPosition()
@@ -51,6 +70,9 @@ public class BossMonsterController : MonsterController {
         // choose nearest player
         foreach (GameObject player in players)
         {
+            // ignore dead player
+            if (!player)
+                continue;
 
             float dist = calcDist(player.transform.position);
 
@@ -97,7 +119,8 @@ public class BossMonsterController : MonsterController {
         // set isFreezed to true
         isFreezed = true;
         // add particle animation for freeze
-        freeze_effect = Instantiate(freezeAnimationPrefab, transform.position, Quaternion.identity, transform);
+        freeze_effect = Instantiate(freezeAnimationPrefab, transform.position + 0.5f*transform.up, Quaternion.identity, transform);
+        freeze_effect.transform.localScale *= 2.0f;
 
         StartCoroutine(freezing());
         IEnumerator freezing()
@@ -116,24 +139,15 @@ public class BossMonsterController : MonsterController {
         }
     }
 
-    protected override void InteractWhenHitPlayer(PlayerController player)
+    public override void InteractWhenHitPlayer(PlayerController player)
     {
         if (player == null) return;
-
-
         if (!isFreezed)
         {
             player.Damage(damagePoint);
         }
         else
         {
-            // TODO: add dead animation
-            // play ice broke effect
-            freeze_effect.GetComponent<Animator>().SetTrigger("IsBroke");
-            // continue animation
-            animator.speed = 1;
-            // play dead animation, on exit it will destroy our monster
-            animator.SetTrigger("IsHitted");
         }
     }
 }

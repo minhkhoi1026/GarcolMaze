@@ -9,6 +9,7 @@ public class NavMeshManager : MonoBehaviour {
 	NavMeshSurface2d surface2D;
 	void Start() {
         surface2D = GetComponent<NavMeshSurface2d>();
+        surface2D.hideEditorLogs = true;
     }
 
 	void Update() {

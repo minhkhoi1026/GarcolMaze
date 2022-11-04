@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: -1047715123820717244, guid: adf25985fab4ce64f8ff39fd9ca4b1ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -116,7 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095e551c17cd83644b1d79b7d958a215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burningTime: 3
+  burningDamage: 5
+  burningTime: 5
 --- !u!61 &-3019903688112382790
 BoxCollider2D:
   m_ObjectHideFlags: 0
