@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7752004245431615801}
   - component: {fileID: 7752004245431615802}
   - component: {fileID: 7752004245431615803}
+  - component: {fileID: 5815354656913305371}
   m_Layer: 0
   m_Name: WoodenDoor
   m_TagString: Untagged
@@ -129,3 +130,19 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.099999994}
       - {x: 0.5, y: -0.099999994}
       - {x: 0.5, y: 0.15}
+--- !u!114 &5815354656913305371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7752004245431615806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

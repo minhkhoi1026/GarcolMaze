@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2085117341}
   - component: {fileID: 2085117342}
   - component: {fileID: 3979131786220385413}
+  - component: {fileID: 2393886668752002166}
   m_Layer: 0
   m_Name: BossMonsterCollision
   m_TagString: Untagged
@@ -69,6 +70,18 @@ CapsuleCollider2D:
   m_Offset: {x: -0.05438423, y: 0.3922782}
   m_Size: {x: 0.75832367, y: 0.86003304}
   m_Direction: 0
+--- !u!114 &2393886668752002166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085117340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fc300c151462e48a08c16c81234529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4619063070243379926
 GameObject:
   m_ObjectHideFlags: 0
