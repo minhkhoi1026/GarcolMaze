@@ -32,11 +32,11 @@ public class Timer : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             counter++;
-            timeText.text = secondToTimeStr(counter);
+            timeText.text = secondToTimeStr();
         }
     }
 
-    private string secondToTimeStr(int counter)
+    public string secondToTimeStr()
     {
         int hours = counter / 3600;
         int minutes = (counter % 3600) / 60;
