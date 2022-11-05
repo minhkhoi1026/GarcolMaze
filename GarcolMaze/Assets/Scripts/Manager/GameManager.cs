@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance = null;
@@ -53,21 +53,27 @@ public class GameManager : MonoBehaviour
 
     private void InitGame()
     {
+
+        spawnMonster();
+        spawnRandomTrash(nInitialTrash);
+        spawnRandomItem(nInitialItem);
+    }
+
+    private void spawnMonster()
+	{
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
         List<Vector3> monsterPositionList = boardManager.GenerateRandomPosition(nInitialMonster,
             new Vector3[] { players[0].transform.position, players[1].transform.position },
             6f);
-
-        enemyManager.SpawnMonster(monsterPositionList[0], "BossMonster");
-
+        // spawn Boss
+        if (SceneManager.GetActiveScene().name.Substring(6) != "1")
+		    enemyManager.SpawnMonster(monsterPositionList[0], "BossMonster");
+        // spawn Miniboss
         for (int i = 1; i < monsterPositionList.Count; i++)
         {
             enemyManager.SpawnMonster(monsterPositionList[i], "MiniMonster");
         }
-
-        spawnRandomTrash(nInitialTrash);
-        spawnRandomItem(nInitialItem);
     }
 
     private void spawnRandomTrash(int n)

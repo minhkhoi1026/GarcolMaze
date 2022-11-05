@@ -72,7 +72,6 @@ public class BossMonsterController : MonsterController
                 currentItemId = (currentItemId + 1) % itemObjects.Count;
             }
         }
-        Debug.Log(currentItemId);
     }
 
 
