@@ -8,7 +8,7 @@ public class CollectableStats : MonoBehaviour
     public Text recycleableCntText;
     public Text nonRecycleableCntText;
     public Text organicCntText;
-    static string multiplySymbol = "\u00D7";
+    static string multiplySymbol = "x";
 
     public void UpdateStats(int recycleable, int nonRecycleable, int organic)
     {
