@@ -3,18 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MiniMonster
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Maze
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
+  - PlayerA
+  - PlayerB
+  - Monster
   - 
   - 
   - 
@@ -40,4 +41,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Items
+    uniqueID: 2052269269
     locked: 0
